@@ -12,99 +12,99 @@ context default
 
     #=========================
     # Built-in macros with mandatory parameters
-    keyword whole builtin yellow
-    keyword whole decr yellow
-    keyword whole define yellow
-    keyword whole defn yellow
-    keyword whole esyscmd yellow
-    keyword whole eval yellow
-    keyword whole format yellow
-    keyword whole ifdef yellow
-    keyword whole ifelse yellow
-    keyword whole include yellow
-    keyword whole incr yellow
-    keyword whole index yellow
-    keyword whole len yellow
-    keyword whole maketemp yellow
-    keyword whole patsubst yellow
-    keyword whole popdef yellow
-    keyword whole pushdef yellow
-    keyword whole regexp yellow
-    keyword whole sinclude yellow
-    keyword whole substr yellow
-    keyword whole syscmd yellow
-    keyword whole translit yellow
-    keyword whole undefine yellow
+    keyword whole builtin standard
+    keyword whole decr math
+    keyword whole define\[\] control
+    keyword whole defn control
+    keyword whole esyscmd control
+    keyword whole eval control
+    keyword whole format\[\] standard
+    keyword whole ifdef control
+    keyword whole ifelse control
+    keyword whole include import
+    keyword whole incr math
+    keyword whole index standard
+    keyword whole len standard
+    keyword whole maketemp standard
+    keyword whole patsubst standard
+    keyword whole popdef control
+    keyword whole pushdef control
+    keyword whole regexp standard
+    keyword whole sinclude import
+    keyword whole substr standard
+    keyword whole syscmd standard
+    keyword whole translit standard
+    keyword whole undefine control
 
     #=========================
     # Built-in macros with optional parameters
-    keyword whole changecom yellow
-    keyword whole changequote yellow
-    keyword whole debugfile yellow
-    keyword whole debugmode yellow
-    keyword whole divert yellow
-    keyword whole divnum yellow
-    keyword whole dumpdef yellow
-    keyword whole errprint yellow
-    keyword whole indir yellow
-    keyword whole m4exit yellow
-    keyword whole m4wrap yellow
-    keyword whole shift yellow
-    keyword whole sysval yellow
-    keyword whole traceoff yellow
-    keyword whole traceon yellow
-    keyword whole undivert yellow
+    keyword whole changecom meta
+    keyword whole changequote meta
+    keyword whole debugfile meta
+    keyword whole debugmode meta
+    keyword whole divert standard
+    keyword whole divnum introspection
+    keyword whole dumpdef introspection
+    keyword whole errprint control
+    keyword whole indir introspection
+    keyword whole m4exit control
+    keyword whole m4wrap control
+    keyword whole shift control
+    keyword whole sysval standard
+    keyword whole traceoff meta
+    keyword whole traceon meta
+    keyword whole undivert standard
 
     #=========================
     # Autoconf and Automake macros
-    keyword whole AC_\[ABCDEFGHIJKLMNOPQRSTUVWXYZ_\] cyan
-    keyword whole AS_\[ABCDEFGHIJKLMNOPQRSTUVWXYZ_\] cyan
-    keyword whole AM_\[ABCDEFGHIJKLMNOPQRSTUVWXYZ_\] cyan
+    keyword whole AC_\[ABCDEFGHIJKLMNOPQRSTUVWXYZ_\] operator
+    keyword whole AS_\[ABCDEFGHIJKLMNOPQRSTUVWXYZ_\] operator
+    keyword whole AM_\[ABCDEFGHIJKLMNOPQRSTUVWXYZ_\] operator
 
     #=========================
     # Variables
-    keyword whole __file__ brightred
-    keyword whole __gnu__ brightred
-    keyword whole __line__ brightred
-    keyword whole __unix__ brightred
-    keyword wholeright $\{0123456789\}\[0123456789\] brightred
-    keyword wholeright $\{@\*#\} brightred
+    keyword whole __file__ constant
+    keyword whole __gnu__ constant
+    keyword whole __line__ constant
+    keyword whole __unix__ constant
+    keyword wholeright $\{0123456789\}\[0123456789\] format
+    keyword wholeright $\{@\*#\} format
 
     #=========================
     # Special symbols
-    keyword ` brightcyan
-    keyword ' brightcyan
-    keyword [ brightcyan
-    keyword ] brightcyan
-    keyword , brightcyan
-    keyword ( brightcyan
-    keyword ) brightcyan
+    keyword ` punctuation
+    keyword ' punctuation
+    keyword [ punctuation
+    keyword ] punctuation
+    keyword , punctuation
+    keyword ( punctuation
+    keyword ) punctuation
 
 
 #=============================
 # Comments
 
-context # \n brown
+context # \n comment
     spellcheck
-    keyword whole BUG brightred
-    keyword whole FixMe brightred
-    keyword whole FIXME brightred
-    keyword whole Note brightred
-    keyword whole NOTE brightred
-    keyword whole ToDo brightred
-    keyword whole TODO brightred
-    keyword !!\[!\] brightred
-    keyword ??\[?\] brightred
+    keyword whole BUG tag
+    keyword whole FixMe tag
+    keyword whole FIXME tag
+    keyword whole Note tag
+    keyword whole NOTE tag
+    keyword whole ToDo tag
+    keyword whole TODO tag
+    keyword !!\[!\] tag
+    keyword ??\[?\] tag
 
 
-context dnl \n brown
+context dnl \n comment
     spellcheck
-    keyword whole BUG brightred
-    keyword whole FixMe brightred
-    keyword whole FIXME brightred
-    keyword whole Note brightred
-    keyword whole NOTE brightred
-    keyword whole ToDo brightred
-    keyword whole TODO brightred
-    keyword !!\[!\] brightred
-    keyword ??\[?\] brightred
+    keyword whole BUG tag
+    keyword whole FixMe tag
+    keyword whole FIXME tag
+    keyword whole Note tag
+    keyword whole NOTE tag
+    keyword whole ToDo tag
+    keyword whole TODO tag
+    keyword !!\[!\] tag
+    keyword ??\[?\] tag

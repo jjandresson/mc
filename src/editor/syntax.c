@@ -796,7 +796,8 @@ get_args (char *l, char **args, int args_size)
 static int
 this_try_alloc_color_pair (const char *fg, const char *bg, const char *attrs)
 {
-    char f[80], b[80], a[80], *p;
+    char f[80], b[80], a[80], *p, *scope_name = NULL;
+    int pair;
 
     if (bg != NULL && *bg == '\0')
         bg = NULL;
@@ -808,22 +809,36 @@ this_try_alloc_color_pair (const char *fg, const char *bg, const char *attrs)
     if ((fg == NULL) && (bg == NULL))
         return EDITOR_NORMAL_COLOR;
 
-    if (fg != NULL)
+    if (bg == NULL && attrs == NULL)
+	scope_name = mc_skin_get ("syntax", fg, NULL);
+
+    /* dereference names from [syntax] group in skin */
+    if (scope_name != NULL)
     {
-        g_strlcpy (f, fg, sizeof (f));
-        p = strchr (f, '/');
+        fg = g_strdup (scope_name);
+        p = strchr (fg, ';');
+        if (p != NULL)
+        {
+            *p++ = '\0';
+            if (*p != '\0')
+            {
+                bg = p;
+                p = strchr (bg, ';');
+            }
+        }
+        if (p != NULL)
+        {
+            *p++ = '\0';
+            if (*p != '\0')
+            {
+                attrs = p;
+                p = strchr (bg, ';');
+            }
+        }
         if (p != NULL)
             *p = '\0';
-        fg = f;
     }
-    if (bg != NULL)
-    {
-        g_strlcpy (b, bg, sizeof (b));
-        p = strchr (b, '/');
-        if (p != NULL)
-            *p = '\0';
-        bg = b;
-    }
+
     if ((fg == NULL) || (bg == NULL))
     {
         /* get colors from skin */
@@ -845,7 +860,14 @@ this_try_alloc_color_pair (const char *fg, const char *bg, const char *attrs)
         {
             p = strchr (editnormal, ';');
             if ((p != NULL) && (*(++p) != '\0'))
+            {
                 g_strlcpy (b, p, sizeof (b));
+                p = strchr (b, ';');
+                if (p != NULL)
+                    do {
+                        *p-- = '\0';
+                    } while (isspace (*p));
+            }
             else
                 g_strlcpy (b, "default", sizeof (b));
             bg = b;
@@ -854,19 +876,38 @@ this_try_alloc_color_pair (const char *fg, const char *bg, const char *attrs)
         g_free (editnormal);
     }
 
+    if (fg != NULL)
+    {
+        p = mc_skin_palette_lookup (fg);
+        g_strlcpy (f, p, sizeof (f));
+        g_free (p);
+        fg = f;
+    }
+    if (bg != NULL)
+    {
+        p = mc_skin_palette_lookup (bg);
+        g_strlcpy (b, p, sizeof (b));
+        g_free (p);
+        bg = b;
+    }
     if (attrs != NULL)
     {
-        g_strlcpy (a, attrs, sizeof (a));
-        p = strchr (a, '/');
-        if (p != NULL)
-            *p = '\0';
+        p = mc_skin_palette_lookup (attrs);
+        g_strlcpy (a, p, sizeof (a));
+        g_free (p);
         /* get_args() mangles the + signs, unmangle 'em */
         p = a;
         while ((p = strchr (p, SYNTAX_TOKEN_PLUS)) != NULL)
             *p++ = '+';
         attrs = a;
     }
-    return tty_try_alloc_color_pair (fg, bg, attrs);
+
+    pair = tty_try_alloc_color_pair (fg, bg, attrs);
+
+    if (scope_name != NULL)
+        g_free (scope_name);
+
+    return pair;
 }
 
 /* --------------------------------------------------------------------------------------------- */

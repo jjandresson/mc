@@ -11,44 +11,79 @@ context default
     keyword whole linestart\[\t\s\]wholeright
 
 # Combinations below are valid
-    keyword whole whole\[\t\s\]linestart brightcyan
-    keyword whole wholeleft\[\t\s\]linestart brightcyan
-    keyword whole wholeright\[\t\s\]linestart brightcyan
-    keyword whole whole\[\] brightcyan
-    keyword whole wholeleft\[\] brightcyan
-    keyword whole wholeright\[\] brightcyan
-    keyword whole linestart\[\] brightcyan
+    keyword whole whole\[\t\s\]linestart modifier
+    keyword whole wholeleft\[\t\s\]linestart modifier
+    keyword whole wholeright\[\t\s\]linestart modifier
+    keyword whole whole\[\] modifier
+    keyword whole wholeleft\[\] modifier
+    keyword whole wholeright\[\] modifier
+    keyword whole linestart\[\] modifier
 
-    keyword whole wholechars\[\t\s\]left brightcyan
-    keyword whole wholechars\[\t\s\]right brightcyan
-    keyword whole wholechars\[\] brightcyan
-    keyword whole define\[\] brightcyan
+    keyword whole wholechars\[\t\s\]left modifier
+    keyword whole wholechars\[\t\s\]right modifier
+    keyword whole wholechars\[\] modifier
+    keyword whole define\[\] modifier
 
-    keyword whole spellcheck\[\] yellow
-    keyword whole keyword\[\] yellow
-    keyword whole context\[\t\s\]exclusive brightred
-    keyword whole context\[\t\s\]default brightred
-    keyword whole context\[\] brightred
-    keyword whole caseinsensitive\[\] brightred
+    keyword whole spellcheck\[\] control
+    keyword whole keyword\[\] control
+    keyword whole context\[\t\s\]exclusive operator
+    keyword whole context\[\t\s\]default operator
+    keyword whole context\[\] operator
+    keyword whole caseinsensitive\[\] modifier
 
-    keyword whole linestart file\[\] brightgreen
-    keyword whole linestart include\[\] brightred
+    keyword whole linestart file\[\] preprocessor
+    keyword whole linestart include\[\] preprocessor
 
-    keyword whole black black blue
-    keyword whole red red
-    keyword whole green green
-    keyword whole brown brown
-    keyword whole blue blue black
-    keyword whole magenta magenta
-    keyword whole cyan cyan
-    keyword whole lightgray lightgray
-    keyword whole gray gray black
-    keyword whole brightred brightred
-    keyword whole brightgreen brightgreen
-    keyword whole yellow yellow
-    keyword whole brightblue brightblue black
-    keyword whole brightmagenta brightmagenta
-    keyword whole brightcyan brightcyan
-    keyword whole white white
+    keyword whole base base base underline
+    keyword whole default default default underline
 
-context linestart # \n brown
+# Terminal colors
+    keyword whole black white black
+    keyword whole red black red
+    keyword whole green black green
+    keyword whole brown black brown
+    keyword whole blue black blue
+    keyword whole magenta black magenta
+    keyword whole cyan black cyan
+    keyword whole lightgray black lightgray
+    keyword whole gray white gray
+    keyword whole brightred white brightred
+    keyword whole brightgreen white brightgreen
+    keyword whole yellow white yellow
+    keyword whole brightblue white brightblue
+    keyword whole brightmagenta white brightmagenta
+    keyword whole brightcyan white brightcyan
+    keyword whole white black white
+
+# Syntax classes
+    keyword whole assignment assignment
+    keyword whole boolean boolean
+    keyword whole comment comment
+    keyword whole constant constant
+    keyword whole constructor constructor
+    keyword whole control control
+    keyword whole decorator decorator
+    keyword whole deprecated deprecated
+    keyword whole escape escape
+    keyword whole format format
+    keyword whole function function
+    keyword whole import import
+    keyword whole invalid invalid
+    keyword whole introspection introspection
+    keyword whole label label
+    keyword whole magic magic
+    keyword whole math math
+    keyword whole meta meta
+    keyword whole modifier modifier
+    keyword whole operator operator
+    keyword whole preprocessor preprocessor
+    keyword whole punctuation punctuation
+    keyword whole reserved reserved
+    keyword whole standard standard
+    keyword whole string string
+    keyword whole tag tag
+    keyword whole type type
+
+
+context linestart # \n comment
+    spellcheck

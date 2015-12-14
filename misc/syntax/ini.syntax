@@ -1,18 +1,32 @@
 # DOS / Windows INI files
 
-context default cyan
-    keyword = brightred
+context default type
+    keyword = operator
 
 # groups
-context [ ] yellow
+context [ ] preprocessor
 
 # comments:
-context # \n brown
+context # \n comment
     spellcheck
 
-context ; \n brown
+context ; \n comment
     spellcheck
 
-context exclusive = \n brightcyan
-
-
+context exclusive = \n
+    keyword whole black white black
+    keyword whole red black red
+    keyword whole green black green
+    keyword whole brown black brown
+    keyword whole blue black blue
+    keyword whole magenta black magenta
+    keyword whole cyan black cyan
+    keyword whole lightgray black lightgray
+    keyword whole gray white gray
+    keyword whole brightred white brightred
+    keyword whole brightgreen white brightgreen
+    keyword whole yellow white yellow
+    keyword whole brightblue white brightblue
+    keyword whole brightmagenta white brightmagenta
+    keyword whole brightcyan white brightcyan
+    keyword whole white black white

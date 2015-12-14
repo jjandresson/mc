@@ -86,6 +86,7 @@ mc_skin_reinit (void)
 {
     mc_skin_deinit ();
     mc_skin__default.name = mc_skin_get_default_name ();
+    mc_skin__default.palette = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
     mc_skin__default.colors = g_hash_table_new_full (g_str_hash, g_str_equal,
                                                      g_free, mc_skin_hash_destroy_value);
 }
@@ -122,8 +123,10 @@ mc_skin_init (const gchar * skin_override, GError ** mcerror)
     mc_skin__default.name =
         skin_override != NULL ? g_strdup (skin_override) : mc_skin_get_default_name ();
 
+    mc_skin__default.palette = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
     mc_skin__default.colors = g_hash_table_new_full (g_str_hash, g_str_equal,
                                                      g_free, mc_skin_hash_destroy_value);
+
     if (!mc_skin_ini_file_load (&mc_skin__default))
     {
         mc_propagate_error (mcerror, 0,
@@ -169,6 +172,8 @@ mc_skin_deinit (void)
     tty_color_free_all_non_tmp ();
 
     MC_PTR_FREE (mc_skin__default.name);
+    g_hash_table_destroy (mc_skin__default.palette);
+    mc_skin__default.palette = NULL;
     g_hash_table_destroy (mc_skin__default.colors);
     mc_skin__default.colors = NULL;
 
@@ -190,6 +195,31 @@ mc_skin_get (const gchar * group, const gchar * key, const gchar * default_value
         return g_strdup (default_value);
     }
     return mc_config_get_string (mc_skin__default.config, group, key, default_value);
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+gchar *
+mc_skin_palette_lookup (const gchar *color)
+{
+    gchar *kname, *value, *p;
+
+    if (color == NULL)
+        return NULL;
+
+    kname = g_strstrip (g_strdup (color));
+
+    /* syntax files can have colors with alternate colors after a '/' eg brown/Orange */
+    p = strchr (kname, '/');
+    if (p != NULL)
+        *p = '\0';
+
+    value = (gchar *) g_hash_table_lookup (mc_skin__default.palette, (gpointer) kname);
+    if (value == NULL)
+        return kname;
+
+    g_free (kname);
+    return g_strdup (value);
 }
 
 /* --------------------------------------------------------------------------------------------- */

@@ -1,275 +1,279 @@
 context default
-    keyword : brightred
-    keyword . white/Orange
-    keyword > yellow
-    keyword < yellow
-    keyword \+ yellow
-    keyword - yellow
-    keyword \* yellow
-    keyword / yellow
-    keyword % yellow
-    keyword = yellow
-    keyword != yellow
-    keyword == yellow
-    keyword { brightcyan
-    keyword } brightcyan
-    keyword ( brightcyan
-    keyword ) brightcyan
-    keyword [ brightcyan
-    keyword ] brightcyan
-    keyword , brightcyan
-    keyword ; brightmagenta
-    keyword whole self brightred
-    keyword whole and yellow
-    keyword whole as yellow
-    keyword whole assert yellow
-    keyword whole break yellow
-    keyword whole class yellow
-    keyword whole continue yellow
-    keyword whole def yellow
-    keyword whole del yellow
-    keyword whole elif yellow
-    keyword whole else yellow
-    keyword whole except yellow
-    keyword whole exec yellow
-    keyword whole finally yellow
-    keyword whole for yellow
-    keyword whole from yellow
-    keyword whole global yellow
-    keyword whole if yellow
-    keyword whole import yellow
-    keyword whole in yellow
-    keyword whole is yellow
-    keyword whole lambda yellow
-    keyword whole not yellow
-    keyword whole or yellow
-    keyword whole pass yellow
-    keyword whole print yellow
-    keyword whole raise yellow
-    keyword whole return yellow
-    keyword whole try yellow
-    keyword whole while yellow
-    keyword whole with yellow
-    keyword whole yield yellow
+    keyword : punctuation
+    keyword . punctuation
+    keyword > boolean
+    keyword < boolean
+    keyword \+ math
+    keyword - math
+    keyword \* math
+    keyword / math
+    keyword % math
+    keyword = assignment
+    keyword != boolean
+    keyword == boolean
+    keyword { constructor
+    keyword } constructor
+    keyword ( punctuation
+    keyword ) punctuation
+    keyword [ constructor
+    keyword ] constructor
+    keyword , punctuation
+    keyword ; punctuation
+    keyword whole self introspection
+    keyword whole and boolean
+    keyword whole as reserved
+    keyword whole assert standard
+    keyword whole break control
+    keyword whole class control
+    keyword whole continue control
+    keyword whole def control
+    keyword whole del reserved
+    keyword whole elif control
+    keyword whole else control
+    keyword whole except control
+    keyword whole exec reserved
+    keyword whole finally control
+    keyword whole for control
+    keyword whole from import
+    keyword whole global modifier
+    keyword whole if control
+    keyword whole import import
+    keyword whole in reserved
+    keyword whole is boolean
+    keyword whole lambda reserved
+    keyword whole not boolean
+    keyword whole or boolean
+    keyword whole pass control
+    keyword whole print standard
+    keyword whole raise control
+    keyword whole return control
+    keyword whole try control
+    keyword whole while control
+    keyword whole with control
+    keyword whole yield control
 
-    keyword whole abs brightcyan
-    keyword whole all brightcyan
-    keyword whole any brightcyan
-    keyword whole basestring brightcyan
-    keyword whole bin brightcyan
-    keyword whole bool brightcyan
-    keyword whole callable brightcyan
-    keyword whole chr brightcyan
-    keyword whole classmethod brightcyan
-    keyword whole cmp brightcyan
-    keyword whole coerce brightcyan
-    keyword whole compile brightcyan
-    keyword whole complex brightcyan
-    keyword whole delattr brightcyan
-    keyword whole dict brightcyan
-    keyword whole dir brightcyan
-    keyword whole divmod brightcyan
-    keyword whole enumerate brightcyan
-    keyword whole eval brightcyan
-    keyword whole execfile brightcyan
-    keyword whole file brightcyan
-    keyword whole filter brightcyan
-    keyword whole float brightcyan
-    keyword whole frozenset brightcyan
-    keyword whole getattr brightcyan
-    keyword whole globals brightcyan
-    keyword whole hasattr brightcyan
-    keyword whole hash brightcyan
-    keyword whole help brightcyan
-    keyword whole hex brightcyan
-    keyword whole id brightcyan
-    keyword whole input brightcyan
-    keyword whole int brightcyan
-    keyword whole isinstance brightcyan
-    keyword whole issubclass brightcyan
-    keyword whole iter brightcyan
-    keyword whole len brightcyan
-    keyword whole list brightcyan
-    keyword whole locals brightcyan
-    keyword whole long brightcyan
-    keyword whole map brightcyan
-    keyword whole max brightcyan
-    keyword whole min brightcyan
-    keyword whole next brightcyan
-    keyword whole object brightcyan
-    keyword whole oct brightcyan
-    keyword whole open brightcyan
-    keyword whole ord brightcyan
-    keyword whole pow brightcyan
-    keyword whole print brightcyan
-    keyword whole property brightcyan
-    keyword whole range brightcyan
-    keyword whole raw_input brightcyan
-    keyword whole reduce brightcyan
-    keyword whole reload brightcyan
-    keyword whole repr brightcyan
-    keyword whole reversed brightcyan
-    keyword whole round brightcyan
-    keyword whole setattr brightcyan
-    keyword whole slice brightcyan
-    keyword whole sorted brightcyan
-    keyword whole staticmethod brightcyan
-    keyword whole str brightcyan
-    keyword whole sum brightcyan
-    keyword whole super brightcyan
-    keyword whole tuple brightcyan
-    keyword whole type brightcyan
-    keyword whole unichr brightcyan
-    keyword whole unicode brightcyan
-    keyword whole vars brightcyan
-    keyword whole xrange brightcyan
-    keyword whole zip brightcyan
+    keyword whole abs standard
+    keyword whole all standard
+    keyword whole any standard
+    keyword whole basestring standard
+    keyword whole bin standard
+    keyword whole bool type
+    keyword whole callable standard
+    keyword whole chr type
+    keyword whole classmethod decorator
+    keyword whole cmp standard
+    keyword whole coerce standard
+    keyword whole compile standard
+    keyword whole complex type
+    keyword whole delattr standard
+    keyword whole dict type
+    keyword whole dir standard
+    keyword whole divmod standard
+    keyword whole enumerate standard
+    keyword whole eval standard
+    keyword whole execfile standard
+    keyword whole file standard
+    keyword whole filter function
+    keyword whole float float
+    keyword whole frozenset type
+    keyword whole getattr standard
+    keyword whole globals standard
+    keyword whole hasattr standard
+    keyword whole hash standard
+    keyword whole help standard
+    keyword whole hex standard
+    keyword whole id standard
+    keyword whole input standard
+    keyword whole int type
+    keyword whole isinstance standard
+    keyword whole issubclass standard
+    keyword whole iter standard
+    keyword whole len standard
+    keyword whole list type
+    keyword whole locals standard
+    keyword whole long type
+    keyword whole map type
+    keyword whole max standard
+    keyword whole min standard
+    keyword whole next standard
+    keyword whole object type
+    keyword whole oct standard
+    keyword whole open standard
+    keyword whole ord math
+    keyword whole pow math
+    keyword whole print standard
+    keyword whole property standard
+    keyword whole range standard
+    keyword whole raw_input standard
+    keyword whole reduce function
+    keyword whole reload standard
+    keyword whole repr standard
+    keyword whole reversed standard
+    keyword whole round math
+    keyword whole setattr standard
+    keyword whole slice standard
+    keyword whole sorted standard
+    keyword whole staticmethod decorator
+    keyword whole str type
+    keyword whole sum math
+    keyword whole super standard
+    keyword whole tuple type
+    keyword whole type standard
+    keyword whole unichr standard
+    keyword whole unicode standard
+    keyword whole vars type
+    keyword whole xrange standard
+    keyword whole zip standard
 
-    keyword whole atof magenta
-    keyword whole atoi magenta
-    keyword whole atol magenta
-    keyword whole expandtabs magenta
-    keyword whole find magenta
-    keyword whole rfind magenta
-    keyword whole index magenta
-    keyword whole rindex magenta
-    keyword whole count magenta
-    keyword whole split magenta
-    keyword whole splitfields magenta
-    keyword whole join magenta
-    keyword whole joinfields magenta
-    keyword whole strip magenta
-    keyword whole lstrip magenta
-    keyword whole rstrip magenta
-    keyword whole swapcase magenta
-    keyword whole upper magenta
-    keyword whole lower magenta
-    keyword whole ljust magenta
-    keyword whole rjust magenta
-    keyword whole center magenta
-    keyword whole zfill magenta
+    keyword whole atof standard
+    keyword whole atoi standard
+    keyword whole atol standard
+    keyword whole expandtabs standard
+    keyword whole find standard
+    keyword whole rfind standard
+    keyword whole index standard
+    keyword whole rindex standard
+    keyword whole count standard
+    keyword whole split standard
+    keyword whole splitfields standard
+    keyword whole join standard
+    keyword whole joinfields standard
+    keyword whole strip standard
+    keyword whole lstrip standard
+    keyword whole rstrip standard
+    keyword whole swapcase standard
+    keyword whole upper standard
+    keyword whole lower standard
+    keyword whole ljust standard
+    keyword whole rjust standard
+    keyword whole center standard
+    keyword whole zfill standard
 
-    keyword whole __init__ lightgray
-    keyword whole __del__ lightgray
-    keyword whole __repr__ lightgray
-    keyword whole __str__ lightgray
-    keyword whole __cmp__ lightgray
-    keyword whole __hash__ lightgray
-    keyword whole __call__ lightgray
-    keyword whole __getattr__ lightgray
-    keyword whole __setattr__ lightgray
-    keyword whole __delattr__ lightgray
-    keyword whole __len__ lightgray
-    keyword whole __getitem__ lightgray
-    keyword whole __setitem__ lightgray
-    keyword whole __delitem__ lightgray
-    keyword whole __getslice__ lightgray
-    keyword whole __setslice__ lightgray
-    keyword whole __delslice__ lightgray
-    keyword whole __add__ lightgray
-    keyword whole __sub__ lightgray
-    keyword whole __mul__ lightgray
-    keyword whole __div__ lightgray
-    keyword whole __mod__ lightgray
-    keyword whole __divmod__ lightgray
-    keyword whole __pow__ lightgray
-    keyword whole __lshift__ lightgray
-    keyword whole __rshift__ lightgray
-    keyword whole __and__ lightgray
-    keyword whole __xor__ lightgray
-    keyword whole __or__ lightgray
-    keyword whole __neg__ lightgray
-    keyword whole __pos__ lightgray
-    keyword whole __abs__ lightgray
-    keyword whole __invert__ lightgray
-    keyword whole __nonzero__ lightgray
-    keyword whole __coerce__ lightgray
-    keyword whole __int__ lightgray
-    keyword whole __long__ lightgray
-    keyword whole __float__ lightgray
-    keyword whole __oct__ lightgray
-    keyword whole __hex__ lightgray
+    keyword whole __init__ meta
+    keyword whole __del__ meta
+    keyword whole __repr__ meta
+    keyword whole __str__ meta
+    keyword whole __cmp__ meta
+    keyword whole __hash__ meta
+    keyword whole __call__ meta
+    keyword whole __getattr__ meta
+    keyword whole __setattr__ meta
+    keyword whole __delattr__ meta
+    keyword whole __len__ meta
+    keyword whole __getitem__ meta
+    keyword whole __setitem__ meta
+    keyword whole __delitem__ meta
+    keyword whole __getslice__ meta
+    keyword whole __setslice__ meta
+    keyword whole __delslice__ meta
+    keyword whole __add__ meta
+    keyword whole __sub__ meta
+    keyword whole __mul__ meta
+    keyword whole __div__ meta
+    keyword whole __mod__ meta
+    keyword whole __divmod__ meta
+    keyword whole __pow__ meta
+    keyword whole __lshift__ meta
+    keyword whole __rshift__ meta
+    keyword whole __and__ meta
+    keyword whole __xor__ meta
+    keyword whole __or__ meta
+    keyword whole __neg__ meta
+    keyword whole __pos__ meta
+    keyword whole __abs__ meta
+    keyword whole __invert__ meta
+    keyword whole __nonzero__ meta
+    keyword whole __coerce__ meta
+    keyword whole __int__ meta
+    keyword whole __long__ meta
+    keyword whole __float__ meta
+    keyword whole __oct__ meta
+    keyword whole __hex__ meta
 
-    keyword whole __radd__ lightgray
-    keyword whole __rsub__ lightgray
-    keyword whole __rmul__ lightgray
-    keyword whole __rdiv__ lightgray
-    keyword whole __rmod__ lightgray
-    keyword whole __rdivmod__ lightgray
-    keyword whole __rpow__ lightgray
-    keyword whole __rlshift__ lightgray
-    keyword whole __rrshift__ lightgray
-    keyword whole __rand__ lightgray
-    keyword whole __rxor__ lightgray
-    keyword whole __ror__ lightgray
+    keyword whole __radd__ meta
+    keyword whole __rsub__ meta
+    keyword whole __rmul__ meta
+    keyword whole __rdiv__ meta
+    keyword whole __rmod__ meta
+    keyword whole __rdivmod__ meta
+    keyword whole __rpow__ meta
+    keyword whole __rlshift__ meta
+    keyword whole __rrshift__ meta
+    keyword whole __rand__ meta
+    keyword whole __rxor__ meta
+    keyword whole __ror__ meta
 
-    keyword whole __+__ brightred
+    keyword whole __+__ meta
 
-context """ """ green
-    keyword \\" brightgreen
-    keyword \\\n brightgreen
-    keyword %% brightgreen
-    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} brightgreen
-    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diu\} brightgreen
-    keyword %\[hl\]n brightgreen
-    keyword %\[.\]\[0123456789\]s brightgreen
-    keyword %[*] brightgreen
-    keyword %c brightgreen
-    keyword \\\{0123\}\{01234567\}\{01234567\} brightgreen
-    keyword \\\\{01234567\}\{01234567\} brightgreen
-    keyword \\\\{01234567\} brightgreen
-    keyword \\\\ brightgreen
-    keyword \\' brightgreen
-    keyword \\\{abtnvfr\} brightgreen
+context """ """ string
+    keyword \\" escape
+    keyword \\\n escape
+    keyword %% format
+    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} format
+    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diu\} format
+    keyword %\[hl\]n format
+    keyword %\[.\]\[0123456789\]s format
+    keyword %[*] format
+    keyword %c format
+    keyword {} format
+    keyword \\\{0123\}\{01234567\}\{01234567\} escape
+    keyword \\\\{01234567\}\{01234567\} escape
+    keyword \\\\{01234567\} escape
+    keyword \\\\ escape
+    keyword \\' escape
+    keyword \\\{abtnvfr\} escape
 
-context ''' ''' green
-    keyword \\" brightgreen
-    keyword \\\n brightgreen
-    keyword %% brightgreen
-    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} brightgreen
-    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diu\} brightgreen
-    keyword %\[hl\]n brightgreen
-    keyword %\[.\]\[0123456789\]s brightgreen
-    keyword %[*] brightgreen
-    keyword %c brightgreen
-    keyword \\\{0123\}\{01234567\}\{01234567\} brightgreen
-    keyword \\\\{01234567\}\{01234567\} brightgreen
-    keyword \\\\{01234567\} brightgreen
-    keyword \\\\ brightgreen
-    keyword \\' brightgreen
-    keyword \\\{abtnvfr\} brightgreen
+context ''' ''' string
+    keyword \\" escape
+    keyword \\\n escape
+    keyword %% format
+    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} format
+    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diu\} format
+    keyword %\[hl\]n format
+    keyword %\[.\]\[0123456789\]s format
+    keyword %[*] format
+    keyword %c format
+    keyword {} format
+    keyword \\\{0123\}\{01234567\}\{01234567\} escape
+    keyword \\\\{01234567\}\{01234567\} escape
+    keyword \\\\{01234567\} escape
+    keyword \\\\ escape
+    keyword \\' escape
+    keyword \\\{abtnvfr\} escape
 
-context # \n brown
-    keyword coding\{=:\}\[\s\]\[-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\] brightmagenta
-    keyword vim:fileencoding=\[-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\] brightmagenta
-    keyword -\*-\[\s\]coding:\[\s\]\[-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\]\[\s\]-\*- brightmagenta
+context # \n comment
+    keyword coding\{=:\}\[\s\]\[-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\] tag
+    keyword vim:fileencoding=\[-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\] tag
+    keyword -\*-\[\s\]coding:\[\s\]\[-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\]\[\s\]-\*- tag
     spellcheck
 
-context " " green
-    keyword \\" brightgreen
-    keyword %% brightgreen
-    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} brightgreen
-    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diuxX\} brightgreen
-    keyword %\[hl\]n brightgreen
-    keyword %\[.\]\[0123456789\]s brightgreen
-    keyword %[*] brightgreen
-    keyword %c brightgreen
-    keyword \\\{0123\}\{01234567\}\{01234567\} brightgreen
-    keyword \\\\ brightgreen
-    keyword \\' brightgreen
-    keyword \\\{abtnvfr\} brightgreen
+context " " string
+    keyword \\" escape
+    keyword %% escape
+    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} format
+    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diuxX\} format
+    keyword %\[hl\]n format
+    keyword %\[.\]\[0123456789\]s format
+    keyword %[*] format
+    keyword %c format
+    keyword {} format
+    keyword \\\{0123\}\{01234567\}\{01234567\} escape
+    keyword \\\\ escape
+    keyword \\' escape
+    keyword \\\{abtnvfr\} escape
 
-context ' ' green
-    keyword \\" brightgreen
-    keyword \\\n brightgreen
-    keyword %% brightgreen
-    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} brightgreen
-    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diuxX\} brightgreen
-    keyword %\[hl\]n brightgreen
-    keyword %\[.\]\[0123456789\]s brightgreen
-    keyword %[*] brightgreen
-    keyword %c brightgreen
-    keyword \\\{0123\}\{01234567\}\{01234567\} brightgreen
-    keyword \\\\ brightgreen
-    keyword \\' brightgreen
-    keyword \\\{abtnvfr\} brightgreen
+context ' ' string
+    keyword \\" escape
+    keyword \\\n escape
+    keyword %% escape
+    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} format
+    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diuxX\} format
+    keyword %\[hl\]n format
+    keyword %\[.\]\[0123456789\]s format
+    keyword %[*] format
+    keyword %c format
+    keyword {} format
+    keyword \\\{0123\}\{01234567\}\{01234567\} escape
+    keyword \\\\ escape
+    keyword \\' escape
+    keyword \\\{abtnvfr\} escape

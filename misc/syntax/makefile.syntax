@@ -1,71 +1,71 @@
 context default
-    keyword $$ brightcyan
-    keyword $(*) yellow
-    keyword ${*} brightgreen
+    keyword $$ escape
+    keyword $(*) format
+    keyword ${*} format
 # GNU Makefiles
-    keyword whole linestart define magenta
-    keyword whole linestart endef magenta
-    keyword whole linestart include magenta
-    keyword whole linestart ifdef magenta
-    keyword whole linestart ifndef magenta
-    keyword whole linestart endif magenta
-    keyword whole linestart if magenta
-    keyword whole linestart ifeq magenta
-    keyword whole linestart ifneq magenta
-    keyword whole linestart else magenta
+    keyword whole linestart define\[\] preprocessor
+    keyword whole linestart endef preprocessor
+    keyword whole linestart include preprocessor
+    keyword whole linestart ifdef preprocessor
+    keyword whole linestart ifndef preprocessor
+    keyword whole linestart endif preprocessor
+    keyword whole linestart if preprocessor
+    keyword whole linestart ifeq preprocessor
+    keyword whole linestart ifneq preprocessor
+    keyword whole linestart else preprocessor
 # BSD Makefiles
-    keyword whole linestart .\[\s\t\]elif magenta
-    keyword whole linestart .\[\s\t\]else magenta
-    keyword whole linestart .\[\s\t\]endfor magenta
-    keyword whole linestart .\[\s\t\]endif magenta
-    keyword whole linestart .\[\s\t\]for magenta
-    keyword whole linestart .\[\s\t\]if magenta
-    keyword whole linestart .\[\s\t\]include magenta
-    keyword whole linestart .\[\s\t\]undef magenta
+    keyword whole linestart .\[\s\t\]elif preprocessor
+    keyword whole linestart .\[\s\t\]else preprocessor
+    keyword whole linestart .\[\s\t\]endfor preprocessor
+    keyword whole linestart .\[\s\t\]endif preprocessor
+    keyword whole linestart .\[\s\t\]for preprocessor
+    keyword whole linestart .\[\s\t\]if preprocessor
+    keyword whole linestart .\[\s\t\]include preprocessor
+    keyword whole linestart .\[\s\t\]undef preprocessor
 
-    keyword linestart \t lightgray red
-    keyword whole .PHONY white
-    keyword whole .SUFFIXES white
-    keyword whole .DEFAULT white
-    keyword whole .PRECIOUS white
-    keyword whole .INTERMEDIATE white
-    keyword whole .SECONDARY white
-    keyword whole .DELETE_ON_ERROR white
-    keyword whole .IGNORE white
-    keyword whole .LOW_RESOLUTION_TIME white
-    keyword whole .SILENT white
-    keyword whole .EXPORT_ALL_VARIABLES white
-    keyword whole .NOTPARALLEL white
-    keyword whole .NOEXPORT white
-    keyword = white
-    keyword : yellow
-    keyword \\\n yellow
+    keyword linestart \t invalid
+    keyword whole .PHONY meta
+    keyword whole .SUFFIXES meta
+    keyword whole .DEFAULT meta
+    keyword whole .PRECIOUS meta
+    keyword whole .INTERMEDIATE meta
+    keyword whole .SECONDARY meta
+    keyword whole .DELETE_ON_ERROR meta
+    keyword whole .IGNORE meta
+    keyword whole .LOW_RESOLUTION_TIME meta
+    keyword whole .SILENT meta
+    keyword whole .EXPORT_ALL_VARIABLES meta
+    keyword whole .NOTPARALLEL meta
+    keyword whole .NOEXPORT meta
+    keyword = assignment
+    keyword : punctuation
+    keyword \\\n escape
 # this handles strange cases like @something@@somethingelse@ properly
-    keyword whole @+@ brightmagenta black
-    keyword @+@ brightmagenta black
+    keyword whole @+@ tag
+    keyword @+@ tag
 
 # comment
-context linestart # \n brown
+context linestart # \n comment
     spellcheck
-    keyword whole @+@ brightmagenta black
-    keyword @+@ brightmagenta black
+    keyword whole @+@ tag
+    keyword @+@ tag
 
 # right part of an assignment
-context exclusive = \n brightcyan
-    keyword \\\n yellow
-    keyword $$ brightcyan
-    keyword $(*) yellow
-    keyword ${*} brightgreen
-    keyword linestart \t lightgray red
-    keyword whole @+@ brightmagenta black
-    keyword @+@ brightmagenta black
+context exclusive = \n string
+    keyword \\\n escape
+    keyword $$ escape
+    keyword $(*) format
+    keyword ${*} format
+    keyword linestart \t invalid
+    keyword whole @+@ tag
+    keyword @+@ tag
 
 # shell code
 context exclusive linestart \t \n
-    keyword \\\n yellow
-    keyword $$ brightcyan
-    keyword $(*) yellow
-    keyword ${*} brightgreen
-    keyword linestart \t lightgray red
-    keyword whole @+@ brightmagenta black
-    keyword @+@ brightmagenta black
+    keyword \\\n escape
+    keyword $$ escape
+    keyword $(*) format
+    keyword ${*} format
+    keyword linestart \t invalid
+    keyword whole @+@ tag
+    keyword @+@ tag
