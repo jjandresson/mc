@@ -52,7 +52,6 @@ context default
     keyword :	operator
     keyword ..	operator
     keyword ...	type
-    keyword =	assignment
     keyword ==	boolean
     keyword ~=	boolean
     keyword <=	boolean
@@ -64,6 +63,7 @@ context default
     keyword \*	math
     keyword /	math
     keyword ^	math
+    keyword =	assignment
 
 
 # midnight-commander globals
