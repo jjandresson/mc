@@ -65,11 +65,20 @@ context default
     keyword whole decorator decorator
     keyword whole deprecated deprecated
     keyword whole escape escape
+    keyword whole fixed fixed
     keyword whole format format
     keyword whole function function
+    keyword whole heading1 heading1
+    keyword whole heading2 heading2
+    keyword whole heading3 heading3
+    keyword whole heading4 heading4
+    keyword whole heading5 heading5
+    keyword whole heading6 heading6
+    keyword whole image image
     keyword whole import import
     keyword whole invalid invalid
     keyword whole introspection introspection
+    keyword whole emphasis emphasis
     keyword whole label label
     keyword whole magic magic
     keyword whole math math
@@ -78,9 +87,11 @@ context default
     keyword whole operator operator
     keyword whole preprocessor preprocessor
     keyword whole punctuation punctuation
+    keyword whole reference reference
     keyword whole reserved reserved
     keyword whole standard standard
     keyword whole string string
+    keyword whole strong strong
     keyword whole tag tag
     keyword whole type type
 

@@ -1,0 +1,41 @@
+# Syntax rules for Markdown formatted text
+
+caseinsensitive
+
+context default
+    keyword whole &*; escape
+    keyword "*" string
+    keyword \![\{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\}\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]](\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]) image
+    keyword \![\{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\}\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]](\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_&=:;./\]) image
+    keyword [\{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\}\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]][\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]] reference
+    keyword [\{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\}\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]](\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_&=:;./\]) reference
+    keyword linestart \[\s\t\*\]\n meta
+
+context linestart ``` ``` fixed
+    keyword \n fixed
+
+context ` ` fixed
+
+context \*\* \*\* strong
+
+context \* \* emphasis
+
+context <!-- --> comment
+
+context < > meta
+
+context linestart ###### \n heading6
+
+context linestart ##### \n heading5
+
+context linestart #### \n heading4
+
+context linestart ### \n heading3
+
+context linestart ## \n heading2
+
+context linestart # \n heading1
+
+context exclusive linestart [*]: \n
+    keyword "*" string
+    keyword whole * reference

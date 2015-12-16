@@ -261,5 +261,8 @@ include lkr.syntax
 file .\*\\.pp$ Puppet\smanifest\sfile
 include puppet.syntax
 
+file ..\*\\.(markdown|mdown|md)$ Markdown\smarkup\stext
+include markdown.syntax
+
 file .\* unknown
 include unknown.syntax
