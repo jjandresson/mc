@@ -832,7 +832,7 @@ this_try_alloc_color_pair (const char *fg, const char *bg, const char *attrs)
             if (*p != '\0')
             {
                 attrs = p;
-                p = strchr (bg, ';');
+                p = strchr (attrs, ';');
             }
         }
         if (p != NULL)
