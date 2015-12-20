@@ -1,291 +1,318 @@
 # Lua syntax highlighting
-#
-# History:
-#
-# - 2015: Support for long strings and long comments.
-# - 2011: String-literal fixes.
-# - 2005: Started by Mike Gorchak <lestat@i.com.ua>
 
 context default
 
 # keywords
-    keyword whole and		operator
-    keyword whole break		control
-    keyword whole do		control
-    keyword whole else		control
-    keyword whole elseif	control
-    keyword whole end		control
-    keyword whole false		constant
-    keyword whole for		control
-    keyword whole function\[\]	control
-    keyword whole if		control
-    keyword whole in		operator
-    keyword whole local		modifier
-    keyword whole nil		constant
-    keyword whole not		operator
-    keyword whole or		operator
-    keyword whole repeat	control
-    keyword whole return	control
-    keyword whole then		control
-    keyword whole true		constant
-    keyword whole until		control
-    keyword whole while		control
+    keyword whole nil		constant.language.null.lua
+    keyword whole false		constant.language.boolean.lua
+    keyword whole true		constant.language.boolean.lua
 
-# Comment and string delimiters
-    keyword --		comment
-    keyword ]\[=\]]	comment
-    # The following colorizes the start delimiter of "long" strings.
-    # The start delimiter of "long" comments isn't affected by the following
-    # directive but gets its color from the "--" above (because it comes first).
-    keyword [\[=\][	comment
+    keyword whole break		keyword.control.break.lua
+    keyword whole do		keyword.control.loop.lua
+    keyword whole else		keyword.control.if.lua
+    keyword whole elseif	keyword.control.if.lua
+    keyword whole end		keyword.control.end.lua
+    keyword whole for		keyword.control.loop.lua
+    keyword whole function	keyword.control.function.lua
+    keyword whole if		keyword.control.if.lua
+    keyword whole in		keyword.control.lua
+    keyword whole repeat	keyword.control.loop.lua
+    keyword whole return	keyword.control.lua
+    keyword whole then		keyword.control.if.lua
+    keyword whole until		keyword.control.loop.lua
+    keyword whole while		keyword.control.looplua
+
+    keyword whole local		storage.modifier.local.lua
+
+    keyword whole and		keyword.operator.logical.lua
+    keyword whole or		keyword.operator.logical.lua
+    keyword whole not		keyword.operator.logical.lua
+
+    keyword whole self		variable.language.self
 
 # Operators
-    keyword (	operator
-    keyword )	operator
-    keyword {	operator
-    keyword }	operator
-    keyword [	operator
-    keyword ]	operator
-    keyword .	operator
-    keyword ,	punctuation
-    keyword ;	punctuation
-    keyword :	operator
-    keyword ..	operator
-    keyword ...	type
-    keyword ==	boolean
-    keyword ~=	boolean
-    keyword <=	boolean
-    keyword =>	boolean
-    keyword >	boolean
-    keyword <	boolean
-    keyword \+	math
-    keyword -	math
-    keyword \*	math
-    keyword /	math
-    keyword ^	math
-    keyword =	assignment
+    keyword (	punctuation.paren.open.lua
+    keyword )	punctuation.paren.close.lua
+    keyword ,	punctuation.separator.comma.lua
+    keyword ;	punctuation.separator.semicolon.lua
+
+    keyword ...	storage.type.tuple.lua
+
+    keyword ..	keyword.operator.concat.lua
+    keyword .	keyword.operator.lookup.period.lua
+    keyword :	keyword.operator.lookup.colon.lua
+    keyword {	keyword.operator.constructor.table.lua
+    keyword }	keyword.operator.constructor.table.lua
+    keyword [	keyword.operator.lookup.bracket.open.lua
+    keyword ]	keyword.operator.lookup.bracket.close.lua
+
+    keyword >>	keyword.operator.comparison.lua
+    keyword <<	keyword.operator.comparison.lua
+    keyword \+	keyword.operator.arithmetic.lua
+    keyword -	keyword.operator.arithmetic.lua
+    keyword \*	keyword.operator.arithmetic.lua
+    keyword /	keyword.operator.arithmetic.lua
+    keyword ^	keyword.operator.arithmetic.lua
+    keyword %	keyword.operator.arithmetic.lua
+
+    keyword ==	keyword.operator.comparison.lua
+    keyword ~=	keyword.operator.comparison.lua
+    keyword <=	keyword.operator.comparison.lua
+    keyword =>	keyword.operator.comparison.lua
+    keyword >	keyword.operator.comparison.lua
+    keyword <	keyword.operator.comparison.lua
+
+    keyword =	keyword.operator.assignment.lua
 
 
 # midnight-commander globals
-    keyword whole T			function
-    keyword whole Q			function
-    keyword whole N			function
-    keyword whole E			function
-    keyword whole abort			function
-    keyword whole abortive		function
-    keyword whole assert_arg_type	function
-    keyword whole import_from		function
-    keyword whole require_legacy	function
-    keyword whole declare		function
-    keyword whole alert			function
-    keyword whole argv			constant
+    keyword whole T			support.function.library.lua.midnight-commander
+    keyword whole Q			support.function.library.lua.midnight-commander
+    keyword whole N			support.function.library.lua.midnight-commander
+    keyword whole E			support.function.library.lua.midnight-commander
+    keyword whole abort			support.function.library.lua.midnight-commander
+    keyword whole abortive		support.function.library.lua.midnight-commander
+    keyword whole assert_arg_type	support.function.library.lua.midnight-commander
+    keyword whole import_from		support.function.library.lua.midnight-commander
+    keyword whole require_legacy	support.function.library.lua.midnight-commander
+    keyword whole declare		support.function.library.lua.midnight-commander
+    keyword whole alert			support.function.library.lua.midnight-commander
+    keyword whole argv			variable.library.lua.midnight-commander
 
 # Lua Core functions
-    keyword whole assert		function
-    keyword whole collectgarbage	function
-    keyword whole dofile		import
-    keyword whole error			function
-    keyword whole getfenv		deprecated
-    keyword whole getmetatable		meta
-    keyword whole ipairs		function
-    keyword whole load			import
-    keyword whole loadfile		import
-    keyword whole loadstring		deprecated
-    keyword whole next			function
-    keyword whole pairs			function
-    keyword whole pcall			function
-    keyword whole print			function
-    keyword whole rawequal		function
-    keyword whole rawlen		function
-    keyword whole rawget		function
-    keyword whole rawset		assignment
-    keyword whole require		import
-    keyword whole select		function
-    keyword whole setfenv		deprecated
-    keyword whole setmetatable		meta
-    keyword whole tonumber		function
-    keyword whole tostring		function
-    keyword whole type\[\]		function
-    keyword whole unpack		deprecated
-    keyword whole xpcall		function
+    keyword whole dofile		support.function.import.lua
+    keyword whole load			support.function.import.lua
+    keyword whole loadfile		support.function.import.lua
+    keyword whole require		support.function.import.lua
 
-    keyword whole bit32.arshift		deprecated
-    keyword whole bit32.band		deprecated
-    keyword whole bit32.bnot		deprecated
-    keyword whole bit32.bor		deprecated
-    keyword whole bit32.btest		deprecated
-    keyword whole bit32.bxor		deprecated
-    keyword whole bit32.extract		deprecated
-    keyword whole bit32.lrotate		deprecated
-    keyword whole bit32.lshift		deprecated
-    keyword whole bit32.replace		deprecated
-    keyword whole bit32.rrotate		deprecated
-    keyword whole bit32.rshift		deprecated
+    keyword whole assert		support.function.builtin.lua
+    keyword whole collectgarbage	support.function.builtin.lua
+    keyword whole error			support.function.builtin.lua
+    keyword whole getmetatable		support.function.builtin.lua
+    keyword whole ipairs		support.function.builtin.lua
+    keyword whole next			support.function.builtin.lua
+    keyword whole pairs			support.function.builtin.lua
+    keyword whole pcall			support.function.builtin.lua
+    keyword whole print			support.function.builtin.lua
+    keyword whole rawequal		support.function.builtin.lua
+    keyword whole rawlen		support.function.builtin.lua
+    keyword whole rawget		support.function.builtin.lua
+    keyword whole rawset		support.function.builtin.lua
+    keyword whole select		support.function.builtin.lua
+    keyword whole setmetatable		support.function.builtin.lua
+    keyword whole tonumber		support.function.builtin.lua
+    keyword whole tostring		support.function.builtin.lua
+    keyword whole type			support.function.builtin.lua
+    keyword whole xpcall		support.function.builtin.lua
 
-    keyword whole coroutine.create	function
-    keyword whole coroutine.isyieldable	function
-    keyword whole coroutine.resume	function
-    keyword whole coroutine.running	function
-    keyword whole coroutine.status	function
-    keyword whole coroutine.wrap	function
-    keyword whole coroutine.yield	function
+    keyword whole getfenv		invalid.deprecated.support.function.lua
+    keyword whole loadstring		invalid.deprecated.support.function.lua
+    keyword whole setfenv		invalid.deprecated.support.function.lua
+    keyword whole unpack		invalid.deprecated.support.function.lua
 
-    keyword whole debug.debug		function
-    keyword whole debug.getfenv		deprecated
-    keyword whole debug.gethook		function
-    keyword whole debug.getinfo		function
-    keyword whole debug.getlocal	function
-    keyword whole debug.getmetatable	function
-    keyword whole debug.getregistry	function
-    keyword whole debug.getupvalue	function
-    keyword whole debug.getuservalue	function
-    keyword whole debug.setfenv		deprecated
-    keyword whole debug.sethook		function
-    keyword whole debug.setlocal	function
-    keyword whole debug.setmetatable	function
-    keyword whole debug.setupvalue	function
-    keyword whole debug.setuservalue	function
-    keyword whole debug.traceback	function
-    keyword whole debug.upvalueid	function
-    keyword whole debug.upvaluejoin	function
+    keyword whole bit32.arshift		invalid.deprecated.support.function.library.lua
+    keyword whole bit32.band		invalid.deprecated.support.function.library.lua
+    keyword whole bit32.bnot		invalid.deprecated.support.function.library.lua
+    keyword whole bit32.bor		invalid.deprecated.support.function.library.lua
+    keyword whole bit32.btest		invalid.deprecated.support.function.library.lua
+    keyword whole bit32.bxor		invalid.deprecated.support.function.library.lua
+    keyword whole bit32.extract		invalid.deprecated.support.function.library.lua
+    keyword whole bit32.lrotate		invalid.deprecated.support.function.library.lua
+    keyword whole bit32.lshift		invalid.deprecated.support.function.library.lua
+    keyword whole bit32.replace		invalid.deprecated.support.function.library.lua
+    keyword whole bit32.rrotate		invalid.deprecated.support.function.library.lua
+    keyword whole bit32.rshift		invalid.deprecated.support.function.library.lua
 
-    keyword whole io.close		function
-    keyword whole io.flush		function
-    keyword whole io.input		function
-    keyword whole io.lines		function
-    keyword whole io.open		function
-    keyword whole io.output		function
-    keyword whole io.popen		function
-    keyword whole io.read		function
-    keyword whole io.stderr		constant
-    keyword whole io.stdin		constant
-    keyword whole io.stdout		constant
-    keyword whole io.tmpfile		function
-    keyword whole io.type		function
-    keyword whole io.write		function
+    keyword whole coroutine.create	support.function.library.lua
+    keyword whole coroutine.isyieldable	support.function.library.lua
+    keyword whole coroutine.resume	support.function.library.lua
+    keyword whole coroutine.running	support.function.library.lua
+    keyword whole coroutine.status	support.function.library.lua
+    keyword whole coroutine.wrap	support.function.library.lua
+    keyword whole coroutine.yield	support.function.library.lua
 
-    keyword whole math.abs		math
-    keyword whole math.acos		math
-    keyword whole math.asin		math
-    keyword whole math.atan		math
-    keyword whole math.atan2		deprecated
-    keyword whole math.ceil		math
-    keyword whole math.cos		math
-    keyword whole math.deg		math
-    keyword whole math.exp		math
-    keyword whole math.floor		math
-    keyword whole math.fmod		math
-    keyword whole math.frexp		deprecated
-    keyword whole math.huge		constant
-    keyword whole math.ldexp		deprecated
-    keyword whole math.log		math
-    keyword whole math.log10		deprecated
-    keyword whole math.max		math
-    keyword whole math.maxinteger	math
-    keyword whole math.min		math
-    keyword whole math.mininteger	math
-    keyword whole math.modf		math
-    keyword whole math.pi		constant
-    keyword whole math.pow		deprecated
-    keyword whole math.rad		math
-    keyword whole math.random		math
-    keyword whole math.randomseed	math
-    keyword whole math.sin		math
-    keyword whole math.sqrt		math
-    keyword whole math.tan		math
-    keyword whole math.tointeger	function
-    keyword whole math.type		introspection
-    keyword whole math.ult		boolean
+    keyword whole debug.debug		support.function.library.lua
+    keyword whole debug.getfenv		invalid.deprecated.support.function.library.lua
+    keyword whole debug.gethook		support.function.library.lua
+    keyword whole debug.getinfo		support.function.library.lua
+    keyword whole debug.getlocal	support.function.library.lua
+    keyword whole debug.getmetatable	support.function.library.lua
+    keyword whole debug.getregistry	support.function.library.lua
+    keyword whole debug.getupvalue	support.function.library.lua
+    keyword whole debug.getuservalue	support.function.library.lua
+    keyword whole debug.setfenv		invalid.deprecated.support.function.library.lua
+    keyword whole debug.sethook		support.function.library.lua
+    keyword whole debug.setlocal	support.function.library.lua
+    keyword whole debug.setmetatable	support.function.library.lua
+    keyword whole debug.setupvalue	support.function.library.lua
+    keyword whole debug.setuservalue	support.function.library.lua
+    keyword whole debug.traceback	support.function.library.lua
+    keyword whole debug.upvalueid	support.function.library.lua
+    keyword whole debug.upvaluejoin	support.function.library.lua
 
-    keyword whole os.clock		function
-    keyword whole os.date		function
-    keyword whole os.difftime		function
-    keyword whole os.execute		function
-    keyword whole os.exit		function
-    keyword whole os.getenv		function
-    keyword whole os.remove		function
-    keyword whole os.rename		function
-    keyword whole os.setlocale		function
-    keyword whole os.time		function
-    keyword whole os.tmpname		function
+    keyword whole io.close		support.function.library.lua
+    keyword whole io.flush		support.function.library.lua
+    keyword whole io.input		support.function.library.lua
+    keyword whole io.lines		support.function.library.lua
+    keyword whole io.open		support.function.library.lua
+    keyword whole io.output		support.function.library.lua
+    keyword whole io.popen		support.function.library.lua
+    keyword whole io.read		support.function.library.lua
+    keyword whole io.stderr		constant.library.lua
+    keyword whole io.stdin		constant.library.lua
+    keyword whole io.stdout		constant.library.lua
+    keyword whole io.tmpfile		support.function.library.lua
+    keyword whole io.type		support.function.library.lua
+    keyword whole io.write		support.function.library.lua
 
-    keyword whole package.config	constant
-    keyword whole package.cpath		constant
-    keyword whole package.loaded	constant
-    keyword whole package.loadlib	function
-    keyword whole package.path		constant
-    keyword whole package.preload	constant
-    keyword whole package.searchers	constant
-    keyword whole package.searchpath	function
+    keyword whole math.abs		support.function.library.lua
+    keyword whole math.acos		support.function.library.lua
+    keyword whole math.asin		support.function.library.lua
+    keyword whole math.atan		support.function.library.lua
+    keyword whole math.atan2		invalid.deprecated.support.function.library.lua
+    keyword whole math.ceil		support.function.library.lua
+    keyword whole math.cos		support.function.library.lua
+    keyword whole math.deg		support.function.library.lua
+    keyword whole math.exp		support.function.library.lua
+    keyword whole math.floor		support.function.library.lua
+    keyword whole math.fmod		support.function.library.lua
+    keyword whole math.frexp		invalid.deprecated.support.function.library.lua
+    keyword whole math.huge		support.constant.language.lua
+    keyword whole math.ldexp		invalid.deprecated.support.function.library.lua
+    keyword whole math.log		support.function.library.lua
+    keyword whole math.log10		invalid.deprecated.support.function.library.lua
+    keyword whole math.max		support.function.library.lua
+    keyword whole math.maxinteger	support.function.library.lua
+    keyword whole math.min		support.function.library.lua
+    keyword whole math.mininteger	support.function.library.lua
+    keyword whole math.modf		support.function.library.lua
+    keyword whole math.pi		constant.library.lua
+    keyword whole math.pow		invalid.deprecated.support.function.library.lua
+    keyword whole math.rad		support.function.library.lua
+    keyword whole math.random		support.function.library.lua
+    keyword whole math.randomseed	support.function.library.lua
+    keyword whole math.sin		support.function.library.lua
+    keyword whole math.sqrt		support.function.library.lua
+    keyword whole math.tan		support.function.library.lua
+    keyword whole math.tointeger	support.function.library.lua
+    keyword whole math.type		support.function.library.lua
+    keyword whole math.ult		support.function.library.lua
 
-    keyword whole string.byte		function
-    keyword whole string.char		function
-    keyword whole string.dump		function
-    keyword whole string.find		function
-    keyword whole string.format		function
-    keyword whole string.gfind		deprecated
-    keyword whole string.gmatch		function
-    keyword whole string.gsub		function
-    keyword whole string.len		function
-    keyword whole string.lower		function
-    keyword whole string.match		function
-    keyword whole string.pack		function
-    keyword whole string.packsize	function
-    keyword whole string.rep		function
-    keyword whole string.reverse	function
-    keyword whole string.sub		function
-    keyword whole string.unpack		function
-    keyword whole string.upper		function
+    keyword whole os.clock		support.function.library.lua
+    keyword whole os.date		support.function.library.lua
+    keyword whole os.difftime		support.function.library.lua
+    keyword whole os.execute		support.function.library.lua
+    keyword whole os.exit		support.function.library.lua
+    keyword whole os.getenv		support.function.library.lua
+    keyword whole os.remove		support.function.library.lua
+    keyword whole os.rename		support.function.library.lua
+    keyword whole os.setlocale		support.function.library.lua
+    keyword whole os.time		support.function.library.lua
+    keyword whole os.tmpname		support.function.library.lua
 
-    keyword whole table.concat		function
-    keyword whole table.foreach		deprecated
-    keyword whole table.foreachi	deprecated
-    keyword whole table.getn		deprecated
-    keyword whole table.insert		function
-    keyword whole table.move		function
-    keyword whole table.pack		function
-    keyword whole table.remove		function
-    keyword whole table.setn		deprecated
-    keyword whole table.sort		function
-    keyword whole table.unpack		function
+    keyword whole package.config	constant.library.lua
+    keyword whole package.cpath		variable.library.lua
+    keyword whole package.loaded	variable.library.lua
+    keyword whole package.loadlib	support.function.library.lua
+    keyword whole package.path		variable.library.lua
+    keyword whole package.preload	variable.library.lua
+    keyword whole package.searchers	variable.library.lua
+    keyword whole package.searchpath	support.function.library.lua
 
-    keyword whole utf8.char		function
-    keyword whole utf8.charpattern	constant
-    keyword whole utf8.codepoint	function
-    keyword whole utf8.codes		function
-    keyword whole utf8.len		function
-    keyword whole utf8.offset		function
+    keyword whole string.byte		support.function.library.lua
+    keyword whole string.char		support.function.library.lua
+    keyword whole string.dump		support.function.library.lua
+    keyword whole string.find		support.function.library.lua
+    keyword whole string.format		support.function.library.lua
+    keyword whole string.gfind		invalid.deprecated.support.function.library.lua
+    keyword whole string.gmatch		support.function.library.lua
+    keyword whole string.gsub		support.function.library.lua
+    keyword whole string.len		support.function.library.lua
+    keyword whole string.lower		support.function.library.lua
+    keyword whole string.match		support.function.library.lua
+    keyword whole string.pack		support.function.library.lua
+    keyword whole string.packsize	support.function.library.lua
+    keyword whole string.rep		support.function.library.lua
+    keyword whole string.reverse	support.function.library.lua
+    keyword whole string.sub		support.function.library.lua
+    keyword whole string.unpack		support.function.library.lua
+    keyword whole string.upper		support.function.library.lua
+
+    keyword whole table.concat		support.function.library.lua
+    keyword whole table.foreach		invalid.deprecated.support.function.library.lua
+    keyword whole table.foreachi	invalid.deprecated.support.function.library.lua
+    keyword whole table.getn		invalid.deprecated.support.function.library.lua
+    keyword whole table.insert		support.function.library.lua
+    keyword whole table.move		support.function.library.lua
+    keyword whole table.pack		support.function.library.lua
+    keyword whole table.remove		support.function.library.lua
+    keyword whole table.setn		invalid.deprecated.support.function.library.lua
+    keyword whole table.sort		support.function.library.lua
+    keyword whole table.unpack		support.function.library.lua
+
+    keyword whole utf8.char		support.function.library.lua
+    keyword whole utf8.charpattern	variable.library..lua
+    keyword whole utf8.codepoint	support.function.library.lua
+    keyword whole utf8.codes		support.function.library.lua
+    keyword whole utf8.len		support.function.library.lua
+    keyword whole utf8.offset		support.function.library.lua
+
+# metamethods
+    keyword whole __add__	meta.method.lua
+    keyword whole __sub__	meta.method.lua
+    keyword whole __mul__	meta.method.lua
+    keyword whole __div__	meta.method.lua
+    keyword whole __mod__	meta.method.lua
+    keyword whole __pow__	meta.method.lua
+    keyword whole __unm__	meta.method.lua
+    keyword whole __idiv__	meta.method.lua
+    keyword whole __band__	meta.method.lua
+    keyword whole __bor__	meta.method.lua
+    keyword whole __xor__	meta.method.lua
+    keyword whole __bnot__	meta.method.lua
+    keyword whole __shl__	meta.method.lua
+    keyword whole __shr__	meta.method.lua
+    keyword whole __add__	meta.method.lua
+    keyword whole __concat__	meta.method.lua
+    keyword whole __len__	meta.method.lua
+    keyword whole __eq__	meta.method.lua
+    keyword whole __lt__	meta.method.lua
+    keyword whole __le__	meta.method.lua
+    keyword whole __index__	meta.method.lua
+    keyword whole __newindex__	meta.method.lua
+    keyword whole __call__	meta.method.lua
 
 # file and string methods
     wholechars abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890_.:
 
-    keyword whole \[*\]:close		function
-    keyword whole \[*\]:flush		function
-    keyword whole \[*\]:lines		function
-    keyword whole \[*\]:read		function
-    keyword whole \[*\]:seek		function
-    keyword whole \[*\]:write		function
+    keyword whole \[*\]:close		support.function.library.lua
+    keyword whole \[*\]:flush		support.function.library.lua
+    keyword whole \[*\]:lines		support.function.library.lua
+    keyword whole \[*\]:read		support.function.library.lua
+    keyword whole \[*\]:seek		support.function.library.lua
+    keyword whole \[*\]:write		support.function.library.lua
 
-    keyword whole \[*\]:byte		function
-    keyword whole \[*\]:find		function
-    keyword whole \[*\]:format\[\]	function
-    keyword whole \[*\]:gmatch		function
-    keyword whole \[*\]:gsub		function
-    keyword whole \[*\]:len		function
-    keyword whole \[*\]:lower		function
-    keyword whole \[*\]:match		function
-    keyword whole \[*\]:pack		function
-    keyword whole \[*\]:packsize	function
-    keyword whole \[*\]:rep		function
-    keyword whole \[*\]:reverse		function
-    keyword whole \[*\]:sub		function
-    keyword whole \[*\]:unpack		function
-    keyword whole \[*\]:upper		function
+    keyword whole \[*\]:byte		support.function.library.lua
+    keyword whole \[*\]:find		support.function.library.lua
+    keyword whole \[*\]:format\[\]	support.function.library.lua
+    keyword whole \[*\]:gfind		invalid.deprecated.support.function.library.lua
+    keyword whole \[*\]:gmatch		support.function.library.lua
+    keyword whole \[*\]:gsub		support.function.library.lua
+    keyword whole \[*\]:len		support.function.library.lua
+    keyword whole \[*\]:lower		support.function.library.lua
+    keyword whole \[*\]:match		support.function.library.lua
+    keyword whole \[*\]:pack		support.function.library.lua
+    keyword whole \[*\]:packsize	support.function.library.lua
+    keyword whole \[*\]:rep		support.function.library.lua
+    keyword whole \[*\]:reverse		support.function.library.lua
+    keyword whole \[*\]:sub		support.function.library.lua
+    keyword whole \[*\]:unpack		support.function.library.lua
+    keyword whole \[*\]:upper		support.function.library.lua
 
 
 # Global Variables
-    keyword whole _VERSION constant
-    keyword whole _G constant
+    keyword whole _VERSION constant.language.lua
+    keyword whole _G constant.language.lua
 
 #
 # Long comments
@@ -293,86 +320,84 @@ context default
 
 context exclusive --[[ ]] comment
     # highlights ldoc tags: "@todo", "@param", "@function" etc.
-    keyword @\[abcdefghijklmnopqrstuvwxyz\] tag
+    keyword @\[abcdefghijklmnopqrstuvwxyz\] entity.name.tag.lua
     spellcheck
 context exclusive --[=[ ]=] comment
-    keyword @\[abcdefghijklmnopqrstuvwxyz\] tag
+    keyword @\[abcdefghijklmnopqrstuvwxyz\] entity.name.tag.lua
     spellcheck
 context exclusive --[==[ ]==] comment
-    keyword @\[abcdefghijklmnopqrstuvwxyz\] tag
+    keyword @\[abcdefghijklmnopqrstuvwxyz\] entity.name.tag.lua
     spellcheck
 context exclusive --[===[ ]===] comment
-    keyword @\[abcdefghijklmnopqrstuvwxyz\] tag
+    keyword @\[abcdefghijklmnopqrstuvwxyz\] entity.name.tag.lua
     spellcheck
 # 4 equals and up (the number of ='s doesn't have to match, but that's the best we can do):
 context exclusive --[====\[=\][ ]====\[=\]] comment
-    keyword @\[abcdefghijklmnopqrstuvwxyz\] tag
+    keyword @\[abcdefghijklmnopqrstuvwxyz\] entity.name.tag.lua
     spellcheck
 
 #
 # Long strings
 #
 
-context exclusive [[ ]] string
+context exclusive [[ ]] string.quoted.multiline.other.lua
     spellcheck
-context exclusive [=[ ]=] string
+context exclusive [=[ ]=] string.quoted.multiline.other.lua
     spellcheck
-context exclusive [==[ ]==] string
+context exclusive [==[ ]==] string.quoted.multiline.other.lua
     spellcheck
-context exclusive [===[ ]===] string
+context exclusive [===[ ]===] string.quoted.multiline.other.lua
     spellcheck
 # 4 equals and up (the number of ='s doesn't have to match, but that's the best we can do):
-context exclusive [====\[=\][ ]====\[=\]] string
+context exclusive [====\[=\][ ]====\[=\]] string.quoted.multiline.other.lua
     spellcheck
 
 
 # Simple comments
-context exclusive -- \n comment
-    keyword @\[abcdefghijklmnopqrstuvwxyz\] tag
+context exclusive -- \n comment.line.double-dash.lua
+    keyword @\[abcdefghijklmnopqrstuvwxyz\] comment.tag.line.double-dash.lua
     spellcheck
 
 # Shebang line
-context linestart #! \n magic
+context linestart #! \n comment.line.file-magic.lua
 
 # Strings
-context " " string
-    keyword %a format
-    keyword %c format
-    keyword %d format
-    keyword %l format
-    keyword %p format
-    keyword %q format
-    keyword %s format
-    keyword %u format
-    keyword %w format
-    keyword %x format
-    keyword %z format
-    keyword \\\\ escape
-    keyword \\" escape
-    keyword \\' escape
-    keyword \\\{abtnvfr\} escape
-    keyword \\\{0123\}\{01234567\}\{01234567\} escape
-    keyword \\\{01234567\}\{01234567\} escape
-    keyword \\\{01234567\} escape
+context " " string.quoted.double.lua
+    keyword %a constant.other.placeholder.lua
+    keyword %c constant.other.placeholder.lua
+    keyword %d constant.other.placeholder.lua
+    keyword %l constant.other.placeholder.lua
+    keyword %p constant.other.placeholder.lua
+    keyword %q constant.other.placeholder.lua
+    keyword %s constant.other.placeholder.lua
+    keyword %u constant.other.placeholder.lua
+    keyword %w constant.other.placeholder.lua
+    keyword %x constant.other.placeholder.lua
+    keyword %z constant.other.placeholder.lua
+    keyword \\\\ constant.character.escape.backslash.lua
+    keyword \\" constant.character.escape.double-quote.lua
+    keyword \\\{abtnvfr\} constant.character.escape.special.lua
+    keyword \\\{0123\}\{01234567\}\{01234567\} constant.character.escape.byte.lua
+    keyword \\\{01234567\}\{01234567\} constant.character.escape.octal.lua
+    keyword \\\{01234567\} constant.character.escape.octal.lua
     spellcheck
 
-context ' ' string
-    keyword %a format
-    keyword %c format
-    keyword %d format
-    keyword %l format
-    keyword %p format
-    keyword %q format
-    keyword %s format
-    keyword %u format
-    keyword %w format
-    keyword %x format
-    keyword %z format
-    keyword \\\\ escape
-    keyword \\" escape
-    keyword \\' escape
-    keyword \\\{abtnvfr\} escape
-    keyword \\\{0123\}\{01234567\}\{01234567\} escape
-    keyword \\\{01234567\}\{01234567\} escape
-    keyword \\\{01234567\} escape
+context ' ' string.quoted.single.lua
+    keyword %a constant.other.placeholder.lua
+    keyword %c constant.other.placeholder.lua
+    keyword %d constant.other.placeholder.lua
+    keyword %l constant.other.placeholder.lua
+    keyword %p constant.other.placeholder.lua
+    keyword %q constant.other.placeholder.lua
+    keyword %s constant.other.placeholder.lua
+    keyword %u constant.other.placeholder.lua
+    keyword %w constant.other.placeholder.lua
+    keyword %x constant.other.placeholder.lua
+    keyword %z constant.other.placeholder.lua
+    keyword \\\\ constant.character.escape.lua
+    keyword \\' constant.character.escape.lua
+    keyword \\\{abtnvfr\} constant.character.escape.special.lua
+    keyword \\\{0123\}\{01234567\}\{01234567\} constant.character.escape.byte.lua
+    keyword \\\{01234567\}\{01234567\} constant.character.escape.octal.lua
+    keyword \\\{01234567\} constant.character.escape.octallua
     spellcheck

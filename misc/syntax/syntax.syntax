@@ -5,34 +5,32 @@
 wholechars abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.\\[]{}
 
 context default
-# Invalid combinations, not highlighted
-    keyword whole linestart\[\t\s\]whole
-    keyword whole linestart\[\t\s\]wholeleft
-    keyword whole linestart\[\t\s\]wholeright
+    keyword whole linestart\[\t\s\]whole invalid.illegal.misordered-keywords.syntax
+    keyword whole linestart\[\t\s\]wholeleft invalid.illegal.misordered-keywords.syntax
+    keyword whole linestart\[\t\s\]wholeright invalid.illegal.misordered-keywords.syntax
 
-# Combinations below are valid
-    keyword whole whole\[\t\s\]linestart modifier
-    keyword whole wholeleft\[\t\s\]linestart modifier
-    keyword whole wholeright\[\t\s\]linestart modifier
-    keyword whole whole\[\] modifier
-    keyword whole wholeleft\[\] modifier
-    keyword whole wholeright\[\] modifier
-    keyword whole linestart\[\] modifier
+#    keyword whole whole\[\t\s\]linestart keyword.other.syntax
+#    keyword whole wholeleft\[\t\s\]linestart storage.modifier.syntax
+#    keyword whole wholeright\[\t\s\]linestart storage.modifier.syntax
+    keyword whole whole\[\] keyword.other.delimiter.syntax
+    keyword whole wholeleft\[\] keyword.other.delimiter.syntax
+    keyword whole wholeright\[\] keyword.other.delimiter.syntax
+    keyword whole linestart\[\] keyword.other.delimiter.syntax
 
-    keyword whole wholechars\[\t\s\]left modifier
-    keyword whole wholechars\[\t\s\]right modifier
-    keyword whole wholechars\[\] modifier
-    keyword whole define\[\] modifier
+    keyword whole wholechars\[\t\s\]left keyword.other.directive.syntax
+    keyword whole wholechars\[\t\s\]right keyword.other.directive.syntax
+    keyword whole wholechars\[\] keyword.other.directive.syntax
+    keyword whole define\[\] keyword.operator.assignment.syntax
 
-    keyword whole spellcheck\[\] control
-    keyword whole keyword\[\] control
-    keyword whole context\[\t\s\]exclusive operator
-    keyword whole context\[\t\s\]default operator
-    keyword whole context\[\] operator
-    keyword whole caseinsensitive\[\] modifier
+    keyword whole spellcheck\[\] storage.modifier.syntax
+    keyword whole keyword\[\] keyword.control.match-condition.syntax
+    keyword whole context\[\t\s\]exclusive keyword.control.context.syntax
+    keyword whole context\[\t\s\]default keyword.control.context.syntax
+    keyword whole context\[\] keyword.control.context.syntax
+    keyword whole caseinsensitive\[\] storage.modifier.syntax
 
-    keyword whole linestart file\[\] preprocessor
-    keyword whole linestart include\[\] preprocessor
+    keyword whole linestart file\[\] meta.preprocessor.declaration.syntax
+    keyword whole linestart include\[\] meta.preprocessor.include
 
     keyword whole base base base underline
     keyword whole default default default underline
@@ -56,44 +54,39 @@ context default
     keyword whole white black white
 
 # Syntax classes
-    keyword whole assignment assignment
-    keyword whole boolean boolean
-    keyword whole comment comment
-    keyword whole constant constant
-    keyword whole constructor constructor
-    keyword whole control control
-    keyword whole decorator decorator
-    keyword whole deprecated deprecated
-    keyword whole escape escape
-    keyword whole fixed fixed
-    keyword whole format format
-    keyword whole function function
-    keyword whole heading1 heading1
-    keyword whole heading2 heading2
-    keyword whole heading3 heading3
-    keyword whole heading4 heading4
-    keyword whole heading5 heading5
-    keyword whole heading6 heading6
-    keyword whole image image
-    keyword whole import import
-    keyword whole invalid invalid
-    keyword whole introspection introspection
-    keyword whole emphasis emphasis
-    keyword whole label label
-    keyword whole magic magic
-    keyword whole math math
-    keyword whole meta meta
-    keyword whole modifier modifier
-    keyword whole operator operator
-    keyword whole preprocessor preprocessor
-    keyword whole punctuation punctuation
-    keyword whole reference reference
-    keyword whole reserved reserved
-    keyword whole standard standard
-    keyword whole string string
-    keyword whole strong strong
-    keyword whole tag tag
-    keyword whole type type
+    keyword wholeleft comment\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n comment
+    keyword wholeleft constant.other.placeholder\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n constant.other.placeholder
+    keyword wholeleft constant\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n constant
+    keyword wholeleft entity\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n entity
+    keyword wholeleft invalid.deprecated\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n invalid.deprecated
+    keyword wholeleft invalid\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n invalid
+    keyword wholeleft keyword.control\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n keyword.control
+    keyword wholeleft keyword.operator\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n keyword.operator
+    keyword wholeleft keyword\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n keyword
+    keyword wholeleft markup.emphasis\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n markup.emphasis
+    keyword wholeleft markup.fixed\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n markup.fixed
+    keyword wholeleft markup.heading.1\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n markup.heading.1
+    keyword wholeleft markup.heading.2\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n markup.heading.2
+    keyword wholeleft markup.heading.3\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n markup.heading.3
+    keyword wholeleft markup.heading.4\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n markup.heading.4
+    keyword wholeleft markup.heading.5\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n markup.heading.5
+    keyword wholeleft markup.heading.6\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n markup.heading.6
+    keyword wholeleft markup.image\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n markup.image
+    keyword wholeleft markup.reference\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n markup.reference
+    keyword wholeleft markup.strong\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n markup.strong
+    keyword wholeleft meta.preprocessor\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n meta.preprocessor
+    keyword wholeleft meta\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n meta
+    keyword wholeleft punctuation\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n punctuation
+    keyword wholeleft storage.modifier\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n storage.modifier
+    keyword wholeleft storage\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n storage
+    keyword wholeleft string\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n string
+    keyword wholeleft support.constant\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n support.constant
+    keyword wholeleft support.function.import\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n support.function.import
+    keyword wholeleft support.function.library\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n support.function.library
+    keyword wholeleft support.function\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n support.function
+    keyword wholeleft support.type\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n support.type
+    keyword wholeleft support\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n support
+    keyword wholeleft variable\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.\+-_\]\n variable
 
 
 context linestart # \n comment

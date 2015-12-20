@@ -809,8 +809,32 @@ this_try_alloc_color_pair (const char *fg, const char *bg, const char *attrs)
     if ((fg == NULL) && (bg == NULL))
         return EDITOR_NORMAL_COLOR;
 
-    if (bg == NULL && attrs == NULL)
-	scope_name = mc_skin_get ("syntax", fg, NULL);
+    if (fg != NULL && bg == NULL && attrs == NULL)
+    {
+        scope_name = mc_skin_get ("syntax", fg, NULL);
+
+        /* Look for a color matching a less specific key. */
+        if (scope_name == NULL)
+        {
+            gchar b[BUF_LARGE];
+            strncpy (b, fg, sizeof (b));
+
+            for (p = strrchr (b, '.'); (p > b) && (scope_name == NULL); --p)
+            {
+                if (*p == '.')
+                {
+                    *p = '\0';
+                    scope_name = mc_skin_get ("syntax", b, NULL);
+                }
+            }
+        }
+
+        /* Memoize the original lookup to reduce lookup misses on next call. */
+        if (scope_name != NULL)
+        {
+            /* FIXME: g_hash_table_insert (mc_skin->colors, (gpointer) g_strdup (fg), (gpointer) mc_skin_color_dup (mc_skin_color)); */
+        }
+    }
 
     /* dereference names from [syntax] group in skin */
     if (scope_name != NULL)

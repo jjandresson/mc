@@ -1,108 +1,139 @@
 # Syntax rules for the C and the C++ programming languages
 
 context default
-    keyword whole auto type
-    keyword whole break control
-    keyword whole case control
-    keyword whole char type
-    keyword whole const modifier
-    keyword whole continue control
-    keyword whole do control
-    keyword whole double type
-    keyword whole else control
-    keyword whole enum type
-    keyword whole extern modifier
-    keyword whole float type
-    keyword whole for control
-    keyword whole goto control
-    keyword whole if control
-    keyword whole int type
-    keyword whole long type
-    keyword whole register modifier
-    keyword whole return control
-    keyword whole short type
-    keyword whole signed type
-    keyword whole sizeof modifier
-    keyword whole static modifier
-    keyword whole struct type
-    keyword whole switch control
-    keyword whole typedef type
-    keyword whole union type
-    keyword whole unsigned type
-    keyword whole void type
-    keyword whole volatile modifier
-    keyword whole while control
-    keyword whole asm type
-    keyword whole inline modifier
-    keyword whole wchar_t type
-    keyword whole ... type
-    keyword whole linestart \{\s\t\}\[\s\t\]#*\n preprocessor
-    keyword whole \[\s\t\]default control
-    keyword whole linestart \[\s\t\]\{ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\}\[0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\]: label
+    keyword whole asm			storage.type.c
+    keyword whole auto			storage.type.c
+    keyword whole bool			storage.type.c
+    keyword whole char			storage.type.c
+    keyword whole double		storage.type.c
+    keyword whole enum			storage.type.c
+    keyword whole float			storage.type.c
+    keyword whole int			storage.type.c
+    keyword whole long			storage.type.c
+    keyword whole short			storage.type.c
+    keyword whole signed		storage.type.c
+    keyword whole struct		storage.type.c
+    keyword whole typedef		storage.type.c
+    keyword whole union			storage.type.c
+    keyword whole unsigned		storage.type.c
+    keyword whole void			storage.type.c
 
-    keyword /\* comment
-    keyword \*/ comment
-    keyword // comment
+    keyword whole const			storage.modifier.c
+    keyword whole extern		storage.modifier.c
+    keyword whole inline		storage.modifier.c
+    keyword whole register		storage.modifier.c
+    keyword whole restrict		storage.modifier.c
+    keyword whole static		storage.modifier.c
+    keyword whole volatile		storage.modifier.c
 
-    keyword '\\\{"abtnvfr\}' escape
-    keyword '\\\{0123\}\{01234567\}\{01234567\}' escape
-    keyword '\\'' escape
-    keyword '\\\\' escape
-    keyword '\\0' escape
-    keyword '\{\s!"#$%&()\*\+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ\}' string
+    keyword whole break			keyword.control.c
+    keyword whole case			keyword.control.c
+    keyword whole continue		keyword.control.c
+    keyword whole do			keyword.control.c
+    keyword whole else			keyword.control.c
+    keyword whole for			keyword.control.c
+    keyword whole goto			keyword.control.c
+    keyword whole if			keyword.control.c
+    keyword whole return		keyword.control.c
+    keyword whole switch		keyword.control.c
+    keyword whole while			keyword.control.c
+
+    keyword whole linestart \{\s\t\}\[\s\t\]#*\n meta.preprocessor.c
+
+    keyword whole linestart \[\s\t\]\{ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\}\[0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\]: constant.other.reference.label.c
+
+    keyword /\*	comment.block.c
+    keyword \*/	comment.block.c
+    keyword //	comment.line.double-slash.c++
+
+    keyword '\\\{"abtnvfr\}'	constant.character.escape.c
+    keyword '\\\{0123\}\{01234567\}\{01234567\}' constant.character.escape.c
+    keyword '\\''		constant.character.escape.c
+    keyword '\\\\'		constant.character.escape.c
+    keyword '\\0'		constant.character.escape.c
+
+    keyword FALSE		constant.language.false.c
+    keyword false		constant.language.false.c
+    keyword NULL		constant.language.null.c
+    keyword TRUE		constant.language.true.c
+    keyword true		constant.language.true.c
+
+    keyword '\{\s!"#$%&()\*\+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ\}' string.quoted.single.c
 
 # punctuation characters, sorted by ASCII code
-    keyword ! operator
-    keyword % operator
-    keyword && operator
-    keyword & operator
-    keyword ( operator
-    keyword ) operator
-    keyword \* operator
-    keyword \+ operator
-    keyword , operator
-    keyword - operator
-    keyword / operator
-    keyword : operator
-    keyword ; punctuation
-    keyword < operator
-    keyword = operator
-    keyword > operator
-    keyword ? operator
-    keyword [ operator
-    keyword ] operator
-    keyword ^ operator
-    keyword { operator
-    keyword || operator
-    keyword | operator
-    keyword } operator
-    keyword ~ operator
+    keyword whole sizeof keyword.operator.sizeof.c
+    keyword ,	keyword.operator.other.c
+    keyword ?	keyword.operator.other.ternary.c
+    keyword :	keyword.operator.other.ternary.c
 
-context exclusive /\* \*/ comment
+    keyword (	punctuation.other.open-paren.c
+    keyword )	punctuation.other.close-paren.c
+    keyword ;	punctuation.other.semi-colon.c
+    keyword [	punctuation.array.open-bracket.c
+    keyword ]	punctuation.array.close-bracket.c
+    keyword {	punctuation.scope.open-paren.c
+    keyword }	punctuation.scope.close-paren.c
+
+    keyword \[%&\*\+-/^~\]= keyword.operator.assignment.augmented.c
+    keyword &&=	keyword.operator.assignment.augmented.c
+    keyword ||=	keyword.operator.assignment.augmented.c
+    keyword >>=	keyword.operator.assignment.augmented.c
+    keyword <<=	keyword.operator.assignment.augmented.c
+
+    keyword \+\+ keyword.operator.assignment.c
+    keyword --	keyword.operator.assignment..c
+
+    keyword ==	keyword.operator.comparison.c
+    keyword !=	keyword.operator.comparison.c
+    keyword <=	keyword.operator.comparison.c
+    keyword >=	keyword.operator.comparison.c
+
+    keyword !	keyword.operator.logical.c
+    keyword &&	keyword.operator.logical.c
+    keyword ||	keyword.operator.logical.c
+
+    keyword &	keyword.operator.bitwise.c
+    keyword |	keyword.operator.bitwise.c
+    keyword ^	keyword.operator.bitwise.c
+    keyword ~	keyword.operator.bitwise.c
+    keyword <<	keyword.operator.bitwise.c
+    keyword >>	keyword.operator.bitwise.c
+
+    keyword <	keyword.operator.logical.c
+    keyword >	keyword.operator.logical.c
+
+    keyword %	keyword.operator.arithmetic.c
+    keyword \*	keyword.operator.arithmetic.c
+    keyword \+	keyword.operator.arithmetic.c
+    keyword -	keyword.operator.arithmetic.c
+    keyword /	keyword.operator.arithmetic.c
+    keyword =	keyword.operator.assignment.c
+
+context exclusive /\* \*/ comment.block.c
     spellcheck
 
-context exclusive // \n comment
+context exclusive // \n comment.line.double-slash.c++
     spellcheck
 
-context linestart # \n preprocessor
-    keyword \\\n escape
-    keyword /\**\*/ comment
-    keyword //*\n comment
-    keyword "+" string
-    keyword <+> string
+context linestart # \n meta.preprocessor.c
+    keyword \\\n meta.preprocessor.escape.newline.c
+    keyword /\**\*/ comment.block.c
+    keyword //*\n comment.line.double-slash.c++
+    keyword whole include meta.preprocessor.include.c
+    keyword "+" string.quoted.double.include.c
+    keyword <+> string.quoted.other.lt-gt.include.c
 
-context " " string
+context " " string.quoted.double.c
     spellcheck
-    keyword \\" escape
-    keyword %% escape
-    keyword %\[#0\s-\+,\]\[0123456789\*\]\[.\]\[0123456789\*\]\[L\]\{eEfgGoxX\} format
-    keyword %\[0\s-\+,\]\[0123456789\*\]\[.\]\[0123456789\*\]\[hl\]\{diuxX\} format
-    keyword %\[hl\]n format
-    keyword %\[-\]\[0123456789\*\]\[.\]\[0123456789\*\]s format
-    keyword %[*] format
-    keyword %c format
-    keyword %p format
-    keyword \\\{0123\}\{01234567\}\{01234567\} escape
-    keyword \\\\ escape
-    keyword \\' escape
-    keyword \\\{abtnvfr\} escape
+    keyword \\"									constant.character.escape.c
+    keyword %%									constant.character.escape.c
+    keyword %\[#0\s-\+,\]\[0123456789\*\]\[.\]\[0123456789\*\]\[L\]\{eEfgGoxX\}	constant.other.placeholder.c
+    keyword %\[0\s-\+,\]\[0123456789\*\]\[.\]\[0123456789\*\]\[hl\]\{diuxX\}	constant.other.placeholder.c
+    keyword %\[hl\]n								constant.other.placeholder.c
+    keyword %\[-\]\[0123456789\*\]\[.\]\[0123456789\*\]s			constant.other.placeholder.c
+    keyword %c									constant.other.placeholder.c
+    keyword %p									constant.other.placeholder.c
+    keyword %[*]								invalid.illegal.placeholder.c
+    keyword \\\{0123\}\{01234567\}\{01234567\}					constant.character.escape.c
+    keyword \\\\								constant.character.escape.c
+    keyword \\\{abtnvfr\}							constant.character.escape.c

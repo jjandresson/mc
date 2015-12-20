@@ -5,37 +5,37 @@ caseinsensitive
 context default
     keyword whole &*; escape
     keyword "*" string
-    keyword \![\{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\}\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]](\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]) image
-    keyword \![\{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\}\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]](\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_&=:;./\]) image
-    keyword [\{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\}\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]][\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]] reference
-    keyword [\{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\}\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]](\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_&=:;./\]) reference
+    keyword \![\{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\}\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]](\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]) markup.image
+    keyword \![\{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\}\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]](\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_&=:;./\]) markup.image
+    keyword [\{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\}\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]][\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]] markup.reference
+    keyword [\{abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\}\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.\]](\[abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_&=:;./\]) markup.reference
     keyword linestart \[\s\t\*\]\n meta
 
-context linestart ``` ``` fixed
-    keyword \n fixed
+context linestart ``` ``` markup.fixed
+    keyword \n markup.fixed
 
-context ` ` fixed
+context ` ` markup.fixed
 
-context \*\* \*\* strong
+context \*\* \*\* markup.strong
 
-context \* \* emphasis
+context \* \* markup.emphasis
 
 context <!-- --> comment
 
 context < > meta
 
-context linestart ###### \n heading6
+context linestart ###### \n markup.heading6
 
-context linestart ##### \n heading5
+context linestart ##### \n markup.heading5
 
-context linestart #### \n heading4
+context linestart #### \n markup.heading4
 
-context linestart ### \n heading3
+context linestart ### \n markup.heading3
 
-context linestart ## \n heading2
+context linestart ## \n markup.heading2
 
-context linestart # \n heading1
+context linestart # \n markup.heading1
 
 context exclusive linestart [*]: \n
     keyword "*" string
-    keyword whole * reference
+    keyword whole * markup.reference

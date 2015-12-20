@@ -1,279 +1,384 @@
+# Python syntax highlighting
+
 context default
-    keyword : punctuation
-    keyword . punctuation
-    keyword > boolean
-    keyword < boolean
-    keyword \+ math
-    keyword - math
-    keyword \* math
-    keyword / math
-    keyword % math
-    keyword = assignment
-    keyword != boolean
-    keyword == boolean
-    keyword { constructor
-    keyword } constructor
-    keyword ( punctuation
-    keyword ) punctuation
-    keyword [ constructor
-    keyword ] constructor
-    keyword , punctuation
-    keyword ; punctuation
-    keyword whole self introspection
-    keyword whole and boolean
-    keyword whole as reserved
-    keyword whole assert standard
-    keyword whole break control
-    keyword whole class control
-    keyword whole continue control
-    keyword whole def control
-    keyword whole del reserved
-    keyword whole elif control
-    keyword whole else control
-    keyword whole except control
-    keyword whole exec reserved
-    keyword whole finally control
-    keyword whole for control
-    keyword whole from import
-    keyword whole global modifier
-    keyword whole if control
-    keyword whole import import
-    keyword whole in reserved
-    keyword whole is boolean
-    keyword whole lambda reserved
-    keyword whole not boolean
-    keyword whole or boolean
-    keyword whole pass control
-    keyword whole print standard
-    keyword whole raise control
-    keyword whole return control
-    keyword whole try control
-    keyword whole while control
-    keyword whole with control
-    keyword whole yield control
 
-    keyword whole abs standard
-    keyword whole all standard
-    keyword whole any standard
-    keyword whole basestring standard
-    keyword whole bin standard
-    keyword whole bool type
-    keyword whole callable standard
-    keyword whole chr type
-    keyword whole classmethod decorator
-    keyword whole cmp standard
-    keyword whole coerce standard
-    keyword whole compile standard
-    keyword whole complex type
-    keyword whole delattr standard
-    keyword whole dict type
-    keyword whole dir standard
-    keyword whole divmod standard
-    keyword whole enumerate standard
-    keyword whole eval standard
-    keyword whole execfile standard
-    keyword whole file standard
-    keyword whole filter function
-    keyword whole float float
-    keyword whole frozenset type
-    keyword whole getattr standard
-    keyword whole globals standard
-    keyword whole hasattr standard
-    keyword whole hash standard
-    keyword whole help standard
-    keyword whole hex standard
-    keyword whole id standard
-    keyword whole input standard
-    keyword whole int type
-    keyword whole isinstance standard
-    keyword whole issubclass standard
-    keyword whole iter standard
-    keyword whole len standard
-    keyword whole list type
-    keyword whole locals standard
-    keyword whole long type
-    keyword whole map type
-    keyword whole max standard
-    keyword whole min standard
-    keyword whole next standard
-    keyword whole object type
-    keyword whole oct standard
-    keyword whole open standard
-    keyword whole ord math
-    keyword whole pow math
-    keyword whole print standard
-    keyword whole property standard
-    keyword whole range standard
-    keyword whole raw_input standard
-    keyword whole reduce function
-    keyword whole reload standard
-    keyword whole repr standard
-    keyword whole reversed standard
-    keyword whole round math
-    keyword whole setattr standard
-    keyword whole slice standard
-    keyword whole sorted standard
-    keyword whole staticmethod decorator
-    keyword whole str type
-    keyword whole sum math
-    keyword whole super standard
-    keyword whole tuple type
-    keyword whole type standard
-    keyword whole unichr standard
-    keyword whole unicode standard
-    keyword whole vars type
-    keyword whole xrange standard
-    keyword whole zip standard
+# keywords
+    keyword whole None		constant.language.none.python
+    keyword whole Ellipsis	constant.language.none.python
+    keyword whole None		constant.language.none.python
+    keyword whole NotImplemented constant.language.none.python
+    keyword whole False		constant.language.boolean.python
+    keyword whole True		constant.language.boolean.python
 
-    keyword whole atof standard
-    keyword whole atoi standard
-    keyword whole atol standard
-    keyword whole expandtabs standard
-    keyword whole find standard
-    keyword whole rfind standard
-    keyword whole index standard
-    keyword whole rindex standard
-    keyword whole count standard
-    keyword whole split standard
-    keyword whole splitfields standard
-    keyword whole join standard
-    keyword whole joinfields standard
-    keyword whole strip standard
-    keyword whole lstrip standard
-    keyword whole rstrip standard
-    keyword whole swapcase standard
-    keyword whole upper standard
-    keyword whole lower standard
-    keyword whole ljust standard
-    keyword whole rjust standard
-    keyword whole center standard
-    keyword whole zfill standard
+    keyword whole from		keyword.control.import.from.python
+    keyword whole import	keyword.control.import.python
 
-    keyword whole __init__ meta
-    keyword whole __del__ meta
-    keyword whole __repr__ meta
-    keyword whole __str__ meta
-    keyword whole __cmp__ meta
-    keyword whole __hash__ meta
-    keyword whole __call__ meta
-    keyword whole __getattr__ meta
-    keyword whole __setattr__ meta
-    keyword whole __delattr__ meta
-    keyword whole __len__ meta
-    keyword whole __getitem__ meta
-    keyword whole __setitem__ meta
-    keyword whole __delitem__ meta
-    keyword whole __getslice__ meta
-    keyword whole __setslice__ meta
-    keyword whole __delslice__ meta
-    keyword whole __add__ meta
-    keyword whole __sub__ meta
-    keyword whole __mul__ meta
-    keyword whole __div__ meta
-    keyword whole __mod__ meta
-    keyword whole __divmod__ meta
-    keyword whole __pow__ meta
-    keyword whole __lshift__ meta
-    keyword whole __rshift__ meta
-    keyword whole __and__ meta
-    keyword whole __xor__ meta
-    keyword whole __or__ meta
-    keyword whole __neg__ meta
-    keyword whole __pos__ meta
-    keyword whole __abs__ meta
-    keyword whole __invert__ meta
-    keyword whole __nonzero__ meta
-    keyword whole __coerce__ meta
-    keyword whole __int__ meta
-    keyword whole __long__ meta
-    keyword whole __float__ meta
-    keyword whole __oct__ meta
-    keyword whole __hex__ meta
+    keyword whole break		keyword.control.flow.python
+    keyword whole continue	keyword.control.flow.python
+    keyword whole elif		keyword.control.flow.python
+    keyword whole else		keyword.control.flow.python
+    keyword whole except	keyword.control.flow.python
+    keyword whole finally	keyword.control.flow.python
+    keyword whole for		keyword.control.flow.python
+    keyword whole if		keyword.control.flow.python
+    keyword whole pass		keyword.control.flow.python
+    keyword whole raise		keyword.control.flow.python
+    keyword whole return	keyword.control.flow.python
+    keyword whole try		keyword.control.flow.python
+    keyword whole while		keyword.control.flow.python
+    keyword whole with		keyword.control.flow.python
+    keyword whole yield		keyword.control.flow.python
 
-    keyword whole __radd__ meta
-    keyword whole __rsub__ meta
-    keyword whole __rmul__ meta
-    keyword whole __rdiv__ meta
-    keyword whole __rmod__ meta
-    keyword whole __rdivmod__ meta
-    keyword whole __rpow__ meta
-    keyword whole __rlshift__ meta
-    keyword whole __rrshift__ meta
-    keyword whole __rand__ meta
-    keyword whole __rxor__ meta
-    keyword whole __ror__ meta
+    keyword whole as		keyword.other.python
+    keyword whole assert	keyword.other.python
+    keyword whole del		keyword.other.python
+    keyword whole exec		keyword.other.python
+    keyword whole print		keyword.other.python
 
-    keyword whole __+__ meta
+    keyword whole class		storage.type.function.python
+    keyword whole def		storage.type.function.python
+    keyword whole lambda	storage.type.function.pythont
 
-context """ """ string
-    keyword \\" escape
-    keyword \\\n escape
-    keyword %% format
-    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} format
-    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diu\} format
-    keyword %\[hl\]n format
-    keyword %\[.\]\[0123456789\]s format
-    keyword %[*] format
-    keyword %c format
-    keyword {} format
-    keyword \\\{0123\}\{01234567\}\{01234567\} escape
-    keyword \\\\{01234567\}\{01234567\} escape
-    keyword \\\\{01234567\} escape
-    keyword \\\\ escape
-    keyword \\' escape
-    keyword \\\{abtnvfr\} escape
+    keyword whole global	storage.modifier.global.python
+
+    keyword whole and		keyword.operator.logical.python
+    keyword whole in		keyword.operator.logical.python
+    keyword whole is		keyword.operator.logical.python
+    keyword whole or		keyword.operator.logical.python
+    keyword whole not		keyword.operator.logical.python
+
+    keyword whole self		variable.language.self.python
+
+# Operators
+    keyword (	punctuation.paren.open.python
+    keyword )	punctuation.paren.close.python
+    keyword ,	punctuation.separator.comma.python
+    keyword ;	punctuation.separator.semicolon.python
+    keyword :	punctuation.separator.colon.python
+
+    keyword .	keyword.operator.lookup.period.python
+    keyword {	keyword.operator.constructor.dict.python
+    keyword }	keyword.operator.constructor.dict.python
+    keyword [	keyword.operator.constructor.list.python
+    keyword ]	keyword.operator.constructor.list.python
+
+    keyword \+=	keyword.operator.assignment.augmented.python
+    keyword -=	keyword.operator.assignment.augmented.python
+    keyword \*=	keyword.operator.assignment.augmented.python
+    keyword /=	keyword.operator.assignment.augmented.python
+    keyword //=	keyword.operator.assignment.augmented.python
+    keyword %=	keyword.operator.assignment.augmented.python
+    keyword &=	keyword.operator.assignment.augmented.python
+    keyword |=	keyword.operator.assignment.augmented.python
+    keyword ^=	keyword.operator.assignment.augmented.python
+    keyword >>=	keyword.operator.assignment.augmented.python
+    keyword <<=	keyword.operator.assignment.augmented.python
+    keyword **=	keyword.operator.assignment.augmented.python
+    keyword =	keyword.operator.assignment.python
+
+    keyword ==	keyword.operator.comparison.python
+    keyword !=	keyword.operator.comparison.python
+    keyword <=	keyword.operator.comparison.python
+    keyword =>	keyword.operator.comparison.python
+    keyword >	keyword.operator.comparison.python
+    keyword <	keyword.operator.comparison.python
+
+    keyword \+	keyword.operator.arithmetic.python
+    keyword -	keyword.operator.arithmetic.python
+    keyword \*	keyword.operator.arithmetic.python
+    keyword \*\* keyword.operator.arithmetic.python
+    keyword /	keyword.operator.arithmetic.python
+    keyword //	keyword.operator.arithmetic.python
+    keyword %	keyword.operator.arithmetic.python
+    keyword <<	keyword.operator.arithmetic.python
+    keyword >>	keyword.operator.arithmetic.python
+    keyword &	keyword.operator.arithmetic.python
+    keyword |	keyword.operator.arithmetic.python
+    keyword ^	keyword.operator.arithmetic.python
+    keyword ~	keyword.operator.arithmetic.python
+
+# Built in exceptions
+    keyword whole BaseException			support.type.exception.python
+    keyword whole Exception			support.type.exception.python
+    keyword whole StandardError			support.type.exception.python
+    keyword whole ArithmeticError		support.type.exception.python
+    keyword whole BufferError			support.type.exception.python
+    keyword whole LookupError			support.type.exception.python
+    keyword whole EnvironmentError		support.type.exception.python
+    keyword whole AssertionError		support.type.exception.python
+    keyword whole AttributeError		support.type.exception.python
+    keyword whole EOFError			support.type.exception.python
+    keyword whole FloatingPointError		support.type.exception.python
+    keyword whole GeneratorExit			support.type.exception.python
+    keyword whole IOError			support.type.exception.python
+    keyword whole ImportError			support.type.exception.python
+    keyword whole IndexError			support.type.exception.python
+    keyword whole KeyError			support.type.exception.python
+    keyword whole KeyboardInterrupt		support.type.exception.python
+    keyword whole MemoryError			support.type.exception.python
+    keyword whole NameError			support.type.exception.python
+    keyword whole NotImplementedError		support.type.exception.python
+    keyword whole OSError			support.type.exception.python
+    keyword whole OverflowError			support.type.exception.python
+    keyword whole ReferenceError		support.type.exception.python
+    keyword whole RuntimeError			support.type.exception.python
+    keyword whole StopIteration			support.type.exception.python
+    keyword whole SyntaxError			support.type.exception.python
+    keyword whole IndentationError		support.type.exception.python
+    keyword whole TabError			support.type.exception.python
+    keyword whole SystemError			support.type.exception.python
+    keyword whole SystemExit			support.type.exception.python
+    keyword whole TypeError			support.type.exception.python
+    keyword whole UnboundLocalError		support.type.exception.python
+    keyword whole UnicodeError			support.type.exception.python
+    keyword whole UnicodeEncodeError		support.type.exception.python
+    keyword whole UnicodeDecodeError		support.type.exception.python
+    keyword whole UnicodeTranslateError		support.type.exception.python
+    keyword whole ValueError			support.type.exception.python
+    keyword whole VMSError			support.type.exception.python
+    keyword whole WindowsError			support.type.exception.python
+    keyword whole ZeroDivisionError		support.type.exception.python
+    keyword whole Warning			support.type.exception.python
+    keyword whole UserWarning			support.type.exception.python
+    keyword whole DeprecationWarning		support.type.exception.python
+    keyword whole PendingDeprecationWarning	support.type.exception.python
+    keyword whole SyntaxWarning			support.type.exception.python
+    keyword whole RuntimeWarning		support.type.exception.python
+    keyword whole FutureWarning			support.type.exception.python
+    keyword whole ImportWarning			support.type.exception.python
+    keyword whole UnicodeWarning		support.type.exception.python
+
+# Python core function
+    keyword whole __import__	support.function.builtin.python
+    keyword whole abs		support.function.builtin.python
+    keyword whole all		support.function.builtin.python
+    keyword whole any		support.function.builtin.python
+    keyword whole apply		support.function.builtin.python
+    keyword whole callable	support.function.builtin.python
+    keyword whole chr		support.function.builtin.python
+    keyword whole cmp		support.function.builtin.python
+    keyword whole coerce	support.function.builtin.python
+    keyword whole compile	support.function.builtin.python
+    keyword whole delattr	support.function.builtin.python
+    keyword whole dir		support.function.builtin.python
+    keyword whole divmod	support.function.builtin.python
+    keyword whole eval		support.function.builtin.python
+    keyword whole execfile	support.function.builtin.python
+    keyword whole filter	support.function.builtin.python
+    keyword whole getattr	support.function.builtin.python
+    keyword whole globals	support.function.builtin.python
+    keyword whole hasattr	support.function.builtin.python
+    keyword whole hash		support.function.builtin.python
+    keyword whole hex		support.function.builtin.python
+    keyword whole id		support.function.builtin.python
+    keyword whole input		support.function.builtin.python
+    keyword whole intern	support.function.builtin.python
+    keyword whole isinstance	support.function.builtin.python
+    keyword whole issubclass	support.function.builtin.python
+    keyword whole iter		support.function.builtin.python
+    keyword whole len		support.function.builtin.python
+    keyword whole locals	support.function.builtin.python
+    keyword whole map		support.function.builtin.python
+    keyword whole max		support.function.builtin.python
+    keyword whole min		support.function.builtin.python
+    keyword whole oct		support.function.builtin.python
+    keyword whole ord		support.function.builtin.python
+    keyword whole pow		support.function.builtin.python
+    keyword whole range		support.function.builtin.python
+    keyword whole raw_input	support.function.builtin.python
+    keyword whole reduce	support.function.builtin.python
+    keyword whole reload	support.function.builtin.python
+    keyword whole repr		support.function.builtin.python
+    keyword whole round		support.function.builtin.python
+    keyword whole setattr	support.function.builtin.python
+    keyword whole sorted	support.function.builtin.python
+    keyword whole sum		support.function.builtin.python
+    keyword whole unichr	support.function.builtin.python
+    keyword whole vars		support.function.builtin.python
+    keyword whole zip		support.function.builtin.python
+
+    keyword whole basestring	support.type.python
+    keyword whole bool		support.type.python
+    keyword whole buffer	support.type.python
+    keyword whole classmethod	support.type.python
+    keyword whole complex	support.type.python
+    keyword whole dict		support.type.python
+    keyword whole enumerate	support.type.python
+    keyword whole file		support.type.python
+    keyword whole float		support.type.python
+    keyword whole frozenset	support.type.python
+    keyword whole int		support.type.python
+    keyword whole list		support.type.python
+    keyword whole long		support.type.python
+    keyword whole object	support.type.python
+    keyword whole open		support.type.python
+    keyword whole property	support.type.python
+    keyword whole reversed	support.type.python
+    keyword whole set		support.type.python
+    keyword whole slice		support.type.python
+    keyword whole staticmethod	support.type.python
+    keyword whole str		support.type.python
+    keyword whole super		support.type.python
+    keyword whole tuple		support.type.python
+    keyword whole type		support.type.python
+    keyword whole unicode	support.type.python
+    keyword whole xrange	support.type.python
+
+    keyword whole next		support.function.python
+    keyword whole raise		support.function.python
+
+    keyword whole atof		support.function.library.python
+    keyword whole atoi		support.function.library.python
+    keyword whole atol		support.function.library.python
+    keyword whole expandtabs	support.function.library.python
+    keyword whole find		support.function.library.python
+    keyword whole rfind		support.function.library.python
+    keyword whole index		support.function.library.python
+    keyword whole rindex	support.function.library.python
+    keyword whole count		support.function.library.python
+    keyword whole split		support.function.library.python
+    keyword whole splitfields	support.function.library.python
+    keyword whole join		support.function.library.python
+    keyword whole joinfields	support.function.library.python
+    keyword whole strip		support.function.library.python
+    keyword whole lstrip	support.function.library.python
+    keyword whole rstrip	support.function.library.python
+    keyword whole swapcase	support.function.library.python
+    keyword whole upper		support.function.library.python
+    keyword whole lower		support.function.library.python
+    keyword whole ljust		support.function.library.python
+    keyword whole rjust		support.function.library.python
+    keyword whole center	support.function.library.python
+    keyword whole zfill		support.function.library.python
+
+    keyword whole __init__	meta.method.magic.python
+    keyword whole __del__	meta.method.magic.python
+    keyword whole __repr__	meta.method.magic.python
+    keyword whole __str__	meta.method.magic.python
+    keyword whole __cmp__	meta.method.magic.python
+    keyword whole __hash__	meta.method.magic.python
+    keyword whole __call__	meta.method.magic.python
+    keyword whole __getattr__	meta.method.magic.python
+    keyword whole __setattr__	meta.method.magic.python
+    keyword whole __delattr__	meta.method.magic.python
+    keyword whole __len__	meta.method.magic.python
+    keyword whole __getitem__	meta.method.magic.python
+    keyword whole __setitem__	meta.method.magic.python
+    keyword whole __delitem__	meta.method.magic.python
+    keyword whole __getslice__	meta.method.magic.python
+    keyword whole __setslice__	meta.method.magic.python
+    keyword whole __delslice__	meta.method.magic.python
+    keyword whole __add__	meta.method.magic.python
+    keyword whole __sub__	meta.method.magic.python
+    keyword whole __mul__	meta.method.magic.python
+    keyword whole __div__	meta.method.magic.python
+    keyword whole __mod__	meta.method.magic.python
+    keyword whole __divmod__	meta.method.magic.python
+    keyword whole __pow__	meta.method.magic.python
+    keyword whole __lshift__	meta.method.magic.python
+    keyword whole __rshift__	meta.method.magic.python
+    keyword whole __and__	meta.method.magic.python
+    keyword whole __xor__	meta.method.magic.python
+    keyword whole __or__	meta.method.magic.python
+    keyword whole __neg__	meta.method.magic.python
+    keyword whole __pos__	meta.method.magic.python
+    keyword whole __abs__	meta.method.magic.python
+    keyword whole __invert__	meta.method.magic.python
+    keyword whole __nonzero__	meta.method.magic.python
+    keyword whole __coerce__	meta.method.magic.python
+    keyword whole __int__	meta.method.magic.python
+    keyword whole __long__	meta.method.magic.python
+    keyword whole __float__	meta.method.magic.python
+    keyword whole __oct__	meta.method.magic.python
+    keyword whole __hex__	meta.method.magic.python
+
+    keyword whole __radd__	meta.method.magic.python
+    keyword whole __rsub__	meta.method.magic.python
+    keyword whole __rmul__	meta.method.magic.python
+    keyword whole __rdiv__	meta.method.magic.python
+    keyword whole __rmod__	meta.method.magic.python
+    keyword whole __rdivmod__	meta.method.magic.python
+    keyword whole __rpow__	meta.method.magic.python
+    keyword whole __rlshift__	meta.method.magic.python
+    keyword whole __rrshift__	meta.method.magic.python
+    keyword whole __rand__	meta.method.magic.python
+    keyword whole __rxor__	meta.method.magic.python
+    keyword whole __ror__	meta.method.magic.python
+
+    keyword whole __+__		meta.method.magic.python
+
+context """ """ string.quoted.multiline.double.python
+    keyword \\"					constant.character.escape.double-quote.python
+    keyword \\\n				constant.character.escape.newline.python
+    keyword %%					constant.character.escape.percent.python
+    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} constant.other.placeholder.python
+    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diu\} constant.other.placeholder.python
+    keyword %\[hl\]n				constant.other.placeholder.python
+    keyword %\[.\]\[0123456789\]s		constant.other.placeholder.python
+    keyword %c					constant.other.placeholder.python
+    keyword %[*]				invalid.illegal.placeholder.python
+    keyword {}					constant.other.placeholder.python
+    keyword \\\{0123\}\{01234567\}\{01234567\}	constant.character.escape
+    keyword \\\\{01234567\}\{01234567\}		constant.character.escape
+    keyword \\\\{01234567\}			constant.character.escape
+    keyword \\\\				constant.character.escape
+    keyword \\'					constant.character.escape
+    keyword \\\{abtnvfr\}			constant.character.escape
 
 context ''' ''' string
-    keyword \\" escape
-    keyword \\\n escape
-    keyword %% format
-    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} format
-    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diu\} format
-    keyword %\[hl\]n format
-    keyword %\[.\]\[0123456789\]s format
-    keyword %[*] format
-    keyword %c format
-    keyword {} format
-    keyword \\\{0123\}\{01234567\}\{01234567\} escape
-    keyword \\\\{01234567\}\{01234567\} escape
-    keyword \\\\{01234567\} escape
-    keyword \\\\ escape
-    keyword \\' escape
-    keyword \\\{abtnvfr\} escape
+    keyword \\"					constant.character.escape.double-quote.python
+    keyword \\\n				constant.character.escape.newline.python
+    keyword %%					constant.character.escape.percent.python
+    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} constant.other.placeholder.python
+    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diu\} constant.other.placeholder.python
+    keyword %\[hl\]n				constant.other.placeholder.python
+    keyword %\[.\]\[0123456789\]s		constant.other.placeholder.python
+    keyword %c					constant.other.placeholder.python
+    keyword %[*]				invalid.illegal.placeholder.python
+    keyword {}					constant.other.placeholder.python
+    keyword \\\{0123\}\{01234567\}\{01234567\}	constant.character.escape
+    keyword \\\\{01234567\}\{01234567\}		constant.character.escape
+    keyword \\\\{01234567\}			constant.character.escape
+    keyword \\\\				constant.character.escape
+    keyword \\'					constant.character.escape
+    keyword \\\{abtnvfr\}			constant.character.escape
 
 context # \n comment
-    keyword coding\{=:\}\[\s\]\[-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\] tag
-    keyword vim:fileencoding=\[-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\] tag
-    keyword -\*-\[\s\]coding:\[\s\]\[-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\]\[\s\]-\*- tag
+    keyword coding\{=:\}\[\s\]\[-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\]			entity.name.tag
+    keyword vim:fileencoding=\[-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\]			entity.name.tag
+    keyword -\*-\[\s\]coding:\[\s\]\[-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz\]\[\s\]-\*-	entity.name.tag
     spellcheck
 
-context " " string
-    keyword \\" escape
-    keyword %% escape
-    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} format
-    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diuxX\} format
-    keyword %\[hl\]n format
-    keyword %\[.\]\[0123456789\]s format
-    keyword %[*] format
-    keyword %c format
-    keyword {} format
-    keyword \\\{0123\}\{01234567\}\{01234567\} escape
-    keyword \\\\ escape
-    keyword \\' escape
-    keyword \\\{abtnvfr\} escape
+context " " string.quoted.double.python
+    keyword \\"					constant.character.escape.double-quote.python
+    keyword \\\n				constant.character.escape.newline.python
+    keyword %%					constant.character.escape.percent.python
+    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} constant.other.placeholder.python
+    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diu\} constant.other.placeholder.python
+    keyword %\[hl\]n				constant.other.placeholder.python
+    keyword %\[.\]\[0123456789\]s		constant.other.placeholder.python
+    keyword %c					constant.other.placeholder.python
+    keyword %[*]				invalid.illegal.placeholder.python
+    keyword {}					constant.other.placeholder.python
+    keyword \\\{0123\}\{01234567\}\{01234567\}	constant.character.escape
+    keyword \\\\{01234567\}\{01234567\}		constant.character.escape
+    keyword \\\\{01234567\}			constant.character.escape
+    keyword \\\\				constant.character.escape
+    keyword \\\{abtnvfr\}			constant.character.escape
 
-context ' ' string
-    keyword \\" escape
-    keyword \\\n escape
-    keyword %% escape
-    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} format
-    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diuxX\} format
-    keyword %\[hl\]n format
-    keyword %\[.\]\[0123456789\]s format
-    keyword %[*] format
-    keyword %c format
-    keyword {} format
-    keyword \\\{0123\}\{01234567\}\{01234567\} escape
-    keyword \\\\ escape
-    keyword \\' escape
-    keyword \\\{abtnvfr\} escape
+context ' ' string.quoted.single.python
+    keyword \\\n				constant.character.escape.newline.python
+    keyword %%					constant.character.escape.percent.python
+    keyword %\[#0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[L\]\{eEfgGoxX\} constant.other.placeholder.python
+    keyword %\[0\s-\+,\]\[0123456789\]\[.\]\[0123456789\]\[hl\]\{diu\} constant.other.placeholder.python
+    keyword %\[hl\]n				constant.other.placeholder.python
+    keyword %\[.\]\[0123456789\]s		constant.other.placeholder.python
+    keyword %c					constant.other.placeholder.python
+    keyword %[*]				invalid.illegal.placeholder.python
+    keyword {}					constant.other.placeholder.python
+    keyword \\\{0123\}\{01234567\}\{01234567\}	constant.character.escape
+    keyword \\\\{01234567\}\{01234567\}		constant.character.escape
+    keyword \\\\{01234567\}			constant.character.escape
+    keyword \\\\				constant.character.escape
+    keyword \\'					constant.character.escape
+    keyword \\\{abtnvfr\}			constant.character.escape
