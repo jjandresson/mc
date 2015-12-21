@@ -776,6 +776,50 @@ l_edit_set_cursor_offs (lua_State * L)
 }
 
 /**
+ * Whether an Editbox is fullscreen.
+ *
+ * Example:
+ *
+ *    -- Make current editbox occupy western half of tty.
+ *    ui.Editbox.bind("C-x w", function(edt)
+ *      local canvas = tty.getcanvas()
+ *      edt.fullscreen = false
+ *      me.x, me.y, me.rows = 0, 1, canvas:get_rows() - 2
+ *      me.cols = math.ceil(canvas:get_cols() / 2)
+ *      tty.refresh()
+ *    end)
+ *
+ * @attr fullscreen
+ * @property rw
+ */
+static int
+l_edit_get_fullscreen (lua_State *L)
+{
+    WEdit *edit;
+
+    edit = LUA_TO_EDITBOX (L, 1);
+    lua_pushboolean (L, edit->fullscreen);
+
+    return 1;
+}
+
+static int
+l_edit_set_fullscreen (lua_State *L)
+{
+    WEdit *edit;
+    int fullscreen;
+
+    edit = LUA_TO_EDITBOX (L, 1);
+    fullscreen  = lua_toboolean (L, 2);
+
+    if (edit->fullscreen != fullscreen)
+        edit_toggle_fullscreen (edit);
+
+    return 0;
+}
+
+
+/**
  * Cursor's offset within the line.
  *
  * (Byte-based, __not__ character-based.)
@@ -1298,6 +1342,8 @@ static const struct luaL_Reg ui_edit_lib[] = {
     { "get_cursor_col", l_edit_get_cursor_col },
     { "set_cursor_col", l_edit_set_cursor_col },
     { "get_current_char", l_edit_get_current_char },
+    { "get_fullscreen", l_edit_get_fullscreen },
+    { "set_fullscreen", l_edit_set_fullscreen },
     { "sub", l_edit_sub },
     { "len", l_edit_len },
     { "get_syntax", l_edit_get_syntax },
