@@ -3334,8 +3334,8 @@ edit_execute_cmd (WEdit * edit, unsigned long command, int char_for_insertion)
     /* An ordinary key press */
     if (char_for_insertion >= 0)
     {
-        /* if non persistent selection and text selected */
-        if (!option_persistent_selections && edit->mark1 != edit->mark2)
+        /* if non persistent selection and text selected, or cursor in selection */
+        if (edit->mark1 != edit->mark2 && (!option_persistent_selections || (edit->mark1 <= edit->buffer.curs1 && edit->mark2 >= edit->buffer.curs1)))
             edit_block_delete_cmd (edit);
 
         if (edit->overwrite)
