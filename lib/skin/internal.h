@@ -18,7 +18,18 @@ typedef struct mc_skin_color_struct
     int pair_index;
 } mc_skin_color_t;
 
+typedef struct mc_skin_struct
+{
+    gchar *name;
+    gchar *description;
+    mc_config_t *config;
+    GHashTable *colors;
+    gboolean have_256_colors;
+} mc_skin_t;
+
 /*** global variables defined in .c file *********************************************************/
+
+extern mc_skin_t mc_skin__default;
 
 /*** declarations of public functions ************************************************************/
 
@@ -28,12 +39,11 @@ void mc_skin_set_hardcoded_skin (mc_skin_t *);
 
 gboolean mc_skin_ini_file_parse_colors (mc_skin_t *);
 gboolean mc_skin_color_parse_ini_file (mc_skin_t *);
+void mc_skin_lines_parse_ini_file (mc_skin_t *);
 
 void mc_skin_hardcoded_ugly_lines (mc_skin_t *);
 void mc_skin_hardcoded_space_lines (mc_skin_t *);
 void mc_skin_hardcoded_blackwhite_colors (mc_skin_t *);
-
-void mc_skin_colors_old_configure (mc_skin_t *);
 
 /*** inline functions ****************************************************************************/
 

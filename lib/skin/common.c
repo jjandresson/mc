@@ -2,12 +2,11 @@
    Skins engine.
    Interface functions
 
-   Copyright (C) 2009-2015
+   Copyright (C) 2015
    Free Software Foundation, Inc.
 
    Written by:
-   Slava Zanko <slavazanko@gmail.com>, 2009
-   Egmont Koblinger <egmont@gmail.com>, 2010
+   Jon Andresson <jjandresson@gmail.com>, 2015
 
    This file is part of the Midnight Commander.
 
@@ -133,7 +132,6 @@ mc_skin_init (const gchar * skin_override, GError ** mcerror)
         mc_skin_try_to_load_default ();
         is_good_init = FALSE;
     }
-    mc_skin_colors_old_configure (&mc_skin__default);
 
     if (!mc_skin_ini_file_parse (&mc_skin__default))
     {
@@ -142,7 +140,6 @@ mc_skin_init (const gchar * skin_override, GError ** mcerror)
                             mc_skin__default.name);
 
         mc_skin_try_to_load_default ();
-        mc_skin_colors_old_configure (&mc_skin__default);
         (void) mc_skin_ini_file_parse (&mc_skin__default);
         is_good_init = FALSE;
     }
@@ -153,7 +150,6 @@ mc_skin_init (const gchar * skin_override, GError ** mcerror)
                             ("Unable to use '%s' skin with 256 colors support\non non-256 colors terminal.\nDefault skin has been loaded"),
                             mc_skin__default.name);
         mc_skin_try_to_load_default ();
-        mc_skin_colors_old_configure (&mc_skin__default);
         (void) mc_skin_ini_file_parse (&mc_skin__default);
         is_good_init = FALSE;
     }
@@ -191,6 +187,14 @@ mc_skin_get (const gchar * group, const gchar * key, const gchar * default_value
         return g_strdup (default_value);
     }
     return mc_config_get_string (mc_skin__default.config, group, key, default_value);
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+gchar *
+mc_skin_get_name (void)
+{
+    return g_strdup (mc_skin__default.name);
 }
 
 /* --------------------------------------------------------------------------------------------- */

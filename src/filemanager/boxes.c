@@ -619,7 +619,7 @@ configure_box (void)
 void
 appearance_box (void)
 {
-    current_skin_name = g_strdup (mc_skin__default.name);
+    current_skin_name = mc_skin_get_name ();
     skin_names = mc_skin_list ();
 
     {

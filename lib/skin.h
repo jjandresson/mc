@@ -113,19 +113,9 @@
 
 /*** structures declarations (and typedefs of structures)*****************************************/
 
-typedef struct mc_skin_struct
-{
-    gchar *name;
-    gchar *description;
-    mc_config_t *config;
-    GHashTable *colors;
-    gboolean have_256_colors;
-} mc_skin_t;
-
 /*** global variables defined in .c file *********************************************************/
 
 extern int mc_skin_color__cache[];
-extern mc_skin_t mc_skin__default;
 
 /*** declarations of public functions ************************************************************/
 
@@ -135,10 +125,9 @@ void mc_skin_deinit (void);
 int mc_skin_color_get (const gchar *, const gchar *);
 int mc_skin_color_lookup (const gchar * group, const gchar * name);
 
-
-void mc_skin_lines_parse_ini_file (mc_skin_t *);
-
 gchar *mc_skin_get (const gchar *, const gchar *, const gchar *);
+
+gchar *mc_skin_get_name (void);
 
 GPtrArray *mc_skin_list (void);
 
