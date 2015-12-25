@@ -816,15 +816,15 @@ this_try_alloc_color_pair (const char *fg, const char *bg, const char *attrs)
         /* Look for a color matching a less specific key. */
         if (scope_name == NULL)
         {
-            gchar b[BUF_LARGE];
-            strncpy (b, fg, sizeof (b));
+            gchar buf[BUF_LARGE];
+            strncpy (buf, fg, sizeof (buf));
 
-            for (p = strrchr (b, '.'); (p > b) && (scope_name == NULL); --p)
+            for (p = strrchr (buf, '.'); (p > buf) && (scope_name == NULL); --p)
             {
                 if (*p == '.')
                 {
                     *p = '\0';
-                    scope_name = mc_skin_get ("syntax", b, NULL);
+                    scope_name = mc_skin_get ("syntax", buf, NULL);
                 }
             }
         }
