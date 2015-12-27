@@ -109,6 +109,9 @@ context default
     keyword /	keyword.operator.arithmetic.c
     keyword =	keyword.operator.assignment.c
 
+context linestart #\[\s\t\]if\[\s\t\]0 #\[\s\t\]endif comment.block.other.c
+    spellcheck
+
 context exclusive /\* \*/ comment.block.c
     spellcheck
 
