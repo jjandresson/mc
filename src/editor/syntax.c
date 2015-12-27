@@ -796,7 +796,7 @@ get_args (char *l, char **args, int args_size)
 static int
 this_try_alloc_color_pair (const char *fg, const char *bg, const char *attrs)
 {
-    char f[80], b[80], a[80], *p, *scope_name = NULL;
+    char f[80], b[80], a[80], *p;
     int pair;
 
     if (bg != NULL && *bg == '\0')
@@ -811,56 +811,26 @@ this_try_alloc_color_pair (const char *fg, const char *bg, const char *attrs)
 
     if (fg != NULL && bg == NULL && attrs == NULL)
     {
-        scope_name = mc_skin_get ("syntax", fg, NULL);
+        pair = mc_skin_color_lookup ("syntax", fg);
 
         /* Look for a color matching a less specific key. */
-        if (scope_name == NULL)
+        if (!pair)
         {
             gchar buf[BUF_LARGE];
             strncpy (buf, fg, sizeof (buf));
 
-            for (p = strrchr (buf, '.'); (p > buf) && (scope_name == NULL); --p)
+            for (p = strrchr (buf, '.'); (p > buf) && !pair; --p)
             {
                 if (*p == '.')
                 {
                     *p = '\0';
-                    scope_name = mc_skin_get ("syntax", buf, NULL);
+                    pair = mc_skin_color_lookup ("syntax", buf);
                 }
             }
         }
 
-        /* Memoize the original lookup to reduce lookup misses on next call. */
-        if (scope_name != NULL)
-        {
-            /* FIXME: g_hash_table_insert (mc_skin->colors, (gpointer) g_strdup (fg), (gpointer) mc_skin_color_dup (mc_skin_color)); */
-        }
-    }
-
-    /* dereference names from [syntax] group in skin */
-    if (scope_name != NULL)
-    {
-        fg = g_strdup (scope_name);
-        p = strchr (fg, ';');
-        if (p != NULL)
-        {
-            *p++ = '\0';
-            if (*p != '\0')
-            {
-                bg = p;
-                p = strchr (bg, ';');
-            }
-        }
-        if (p != NULL)
-        {
-            *p++ = '\0';
-            if (*p != '\0')
-            {
-                attrs = p;
-                p = strchr (attrs, ';');
-            }
-        }
-        if (p != NULL)
-            *p = '\0';
+        if (pair)
+            return pair;
     }
 
     if ((fg == NULL) || (bg == NULL))
@@ -902,23 +872,17 @@ this_try_alloc_color_pair (const char *fg, const char *bg, const char *attrs)
 
     if (fg != NULL)
     {
-        p = mc_skin_palette_lookup (fg);
-        g_strlcpy (f, p, sizeof (f));
-        g_free (p);
+        g_strlcpy (f, fg, sizeof (f));
         fg = f;
     }
     if (bg != NULL)
     {
-        p = mc_skin_palette_lookup (bg);
-        g_strlcpy (b, p, sizeof (b));
-        g_free (p);
+        g_strlcpy (b, bg, sizeof (b));
         bg = b;
     }
     if (attrs != NULL)
     {
-        p = mc_skin_palette_lookup (attrs);
-        g_strlcpy (a, p, sizeof (a));
-        g_free (p);
+        g_strlcpy (a, attrs, sizeof (a));
         /* get_args() mangles the + signs, unmangle 'em */
         p = a;
         while ((p = strchr (p, SYNTAX_TOKEN_PLUS)) != NULL)
@@ -927,9 +891,6 @@ this_try_alloc_color_pair (const char *fg, const char *bg, const char *attrs)
     }
 
     pair = tty_try_alloc_color_pair (fg, bg, attrs);
-
-    if (scope_name != NULL)
-        g_free (scope_name);
 
     return pair;
 }

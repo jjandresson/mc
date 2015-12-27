@@ -119,7 +119,6 @@ typedef struct mc_skin_struct
     gchar *description;
     mc_config_t *config;
     GHashTable *colors;
-    GHashTable *palette;
     gboolean have_256_colors;
 } mc_skin_t;
 
@@ -134,12 +133,12 @@ gboolean mc_skin_init (const gchar * skin_override, GError ** error);
 void mc_skin_deinit (void);
 
 int mc_skin_color_get (const gchar *, const gchar *);
+int mc_skin_color_lookup (const gchar * group, const gchar * name);
+
 
 void mc_skin_lines_parse_ini_file (mc_skin_t *);
 
 gchar *mc_skin_get (const gchar *, const gchar *, const gchar *);
-
-gchar * mc_skin_palette_lookup (const gchar *);
 
 GPtrArray *mc_skin_list (void);
 
