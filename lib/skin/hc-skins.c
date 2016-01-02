@@ -33,7 +33,7 @@
 
 /*** file scope macro definitions ****************************************************************/
 
-#define set_lines(x,y) mc_config_set_string(mc_skin->config, "Lines", x, y)
+#define set_lines(x,y) mc_skin_set_string(mc_skin, "Lines", x, y)
 
 /*** file scope type declarations ****************************************************************/
 
@@ -49,37 +49,37 @@
 void
 mc_skin_hardcoded_blackwhite_colors (mc_skin_t * mc_skin)
 {
-    mc_config_set_string (mc_skin->config, "core", "_default_", "default;default");
-    mc_config_set_string (mc_skin->config, "core", "selected", "A_REVERSE");
-    mc_config_set_string (mc_skin->config, "core", "marked", "A_BOLD");
-    mc_config_set_string (mc_skin->config, "core", "markselect", "A_BOLD_REVERSE");
-    mc_config_set_string (mc_skin->config, "core", "disabled", "default");
-    mc_config_set_string (mc_skin->config, "core", "reverse", "A_REVERSE");
-    mc_config_set_string (mc_skin->config, "dialog", "_default_", "A_REVERSE");
-    mc_config_set_string (mc_skin->config, "dialog", "dfocus", "A_BOLD");
-    mc_config_set_string (mc_skin->config, "dialog", "dhotnormal", "A_UNDERLINE");
-    mc_config_set_string (mc_skin->config, "dialog", "dhotfocus", "A_UNDERLINE");
-    mc_config_set_string (mc_skin->config, "error", "_default_", "A_BOLD");
-    mc_config_set_string (mc_skin->config, "menu", "_default_", "A_REVERSE");
-    mc_config_set_string (mc_skin->config, "menu", "menuhot", "A_BOLD");
-    mc_config_set_string (mc_skin->config, "menu", "menusel", "default");
-    mc_config_set_string (mc_skin->config, "menu", "menuhotsel", "A_UNDERLINE");
-    mc_config_set_string (mc_skin->config, "menu", "menuinactive", "A_REVERSE");
-    mc_config_set_string (mc_skin->config, "popupmenu", "_default_", "A_REVERSE");
-    mc_config_set_string (mc_skin->config, "popupmenu", "menusel", "default");
-    mc_config_set_string (mc_skin->config, "popupmenu", "menutitle", "A_REVERSE");
-    mc_config_set_string (mc_skin->config, "statusbar", "_default_", "A_REVERSE");
-    mc_config_set_string (mc_skin->config, "help", "_default_", "A_REVERSE");
-    mc_config_set_string (mc_skin->config, "help", "helpitalic", "A_REVERSE");
-    mc_config_set_string (mc_skin->config, "help", "helpbold", "A_REVERSE");
-    mc_config_set_string (mc_skin->config, "help", "helpslink", "A_BOLD");
-    mc_config_set_string (mc_skin->config, "viewer", "viewunderline", "A_UNDERLINE");
-    mc_config_set_string (mc_skin->config, "editor", "editbold", "A_BOLD");
-    mc_config_set_string (mc_skin->config, "editor", "editmarked", "A_REVERSE");
-    mc_config_set_string (mc_skin->config, "editor", "editframeactive", "A_BOLD");
-    mc_config_set_string (mc_skin->config, "editor", "editframedrag", "A_REVERSE");
-    mc_config_set_string (mc_skin->config, "buttonbar", "hotkey", "default");
-    mc_config_set_string (mc_skin->config, "buttonbar", "button", "A_REVERSE");
+    mc_skin_set_string (mc_skin, "core", "_default_", "default;default");
+    mc_skin_set_string (mc_skin, "core", "selected", "A_REVERSE");
+    mc_skin_set_string (mc_skin, "core", "marked", "A_BOLD");
+    mc_skin_set_string (mc_skin, "core", "markselect", "A_BOLD_REVERSE");
+    mc_skin_set_string (mc_skin, "core", "disabled", "default");
+    mc_skin_set_string (mc_skin, "core", "reverse", "A_REVERSE");
+    mc_skin_set_string (mc_skin, "dialog", "_default_", "A_REVERSE");
+    mc_skin_set_string (mc_skin, "dialog", "dfocus", "A_BOLD");
+    mc_skin_set_string (mc_skin, "dialog", "dhotnormal", "A_UNDERLINE");
+    mc_skin_set_string (mc_skin, "dialog", "dhotfocus", "A_UNDERLINE");
+    mc_skin_set_string (mc_skin, "error", "_default_", "A_BOLD");
+    mc_skin_set_string (mc_skin, "menu", "_default_", "A_REVERSE");
+    mc_skin_set_string (mc_skin, "menu", "menuhot", "A_BOLD");
+    mc_skin_set_string (mc_skin, "menu", "menusel", "default");
+    mc_skin_set_string (mc_skin, "menu", "menuhotsel", "A_UNDERLINE");
+    mc_skin_set_string (mc_skin, "menu", "menuinactive", "A_REVERSE");
+    mc_skin_set_string (mc_skin, "popupmenu", "_default_", "A_REVERSE");
+    mc_skin_set_string (mc_skin, "popupmenu", "menusel", "default");
+    mc_skin_set_string (mc_skin, "popupmenu", "menutitle", "A_REVERSE");
+    mc_skin_set_string (mc_skin, "statusbar", "_default_", "A_REVERSE");
+    mc_skin_set_string (mc_skin, "help", "_default_", "A_REVERSE");
+    mc_skin_set_string (mc_skin, "help", "helpitalic", "A_REVERSE");
+    mc_skin_set_string (mc_skin, "help", "helpbold", "A_REVERSE");
+    mc_skin_set_string (mc_skin, "help", "helpslink", "A_BOLD");
+    mc_skin_set_string (mc_skin, "viewer", "viewunderline", "A_UNDERLINE");
+    mc_skin_set_string (mc_skin, "editor", "editbold", "A_BOLD");
+    mc_skin_set_string (mc_skin, "editor", "editmarked", "A_REVERSE");
+    mc_skin_set_string (mc_skin, "editor", "editframeactive", "A_BOLD");
+    mc_skin_set_string (mc_skin, "editor", "editframedrag", "A_REVERSE");
+    mc_skin_set_string (mc_skin, "buttonbar", "hotkey", "default");
+    mc_skin_set_string (mc_skin, "buttonbar", "button", "A_REVERSE");
 }
 
 /* --------------------------------------------------------------------------------------------- */

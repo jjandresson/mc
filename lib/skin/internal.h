@@ -1,6 +1,10 @@
 #ifndef MC__SKIN_INTERNAL_H
 #define MC__SKIN_INTERNAL_H
 
+#include <lua.h>
+#include <lauxlib.h>
+#include <lualib.h>
+
 #include "lib/global.h"
 #include "lib/skin.h"
 
@@ -22,7 +26,7 @@ typedef struct mc_skin_struct
 {
     gchar *name;
     gchar *description;
-    mc_config_t *config;
+    lua_State *config;
     GHashTable *colors;
     gboolean have_256_colors;
 } mc_skin_t;
@@ -32,6 +36,10 @@ typedef struct mc_skin_struct
 extern mc_skin_t mc_skin__default;
 
 /*** declarations of public functions ************************************************************/
+
+void mc_skin_set_string (mc_skin_t *, const gchar *, const gchar *, const gchar *);
+gchar *mc_skin_get_string (mc_skin_t *, const gchar *, const gchar *, const gchar *);
+gboolean mc_skin_get_bool (mc_skin_t *, const gchar *, const gchar *, gboolean);
 
 gboolean mc_skin_ini_file_load (mc_skin_t *);
 gboolean mc_skin_ini_file_parse (mc_skin_t *);

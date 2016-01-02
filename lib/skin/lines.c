@@ -45,7 +45,7 @@ mc_skin_lines_load_frm (mc_skin_t * mc_skin, const char *name)
 {
     int ret;
     char *frm_val = NULL;
-    frm_val = mc_config_get_string_raw (mc_skin->config, "Lines", name, " ");
+    frm_val = mc_skin_get_string (mc_skin, "Lines", name, " ");
     ret = mc_tty_normalize_lines_char (frm_val);
 
     g_free (frm_val);
