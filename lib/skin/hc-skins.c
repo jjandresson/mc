@@ -28,19 +28,63 @@
 #include <config.h>
 
 #include "internal.h"
+#include "lib/tty/tty.h"
 
 /*** global variables ****************************************************************************/
 
 /*** file scope macro definitions ****************************************************************/
-
-#define set_lines(x,y) mc_skin_set_string(mc_skin, "Lines", x, y)
 
 /*** file scope type declarations ****************************************************************/
 
 /*** file scope variables ************************************************************************/
 
 /*** file scope functions ************************************************************************/
-/* --------------------------------------------------------------------------------------------- */
+
+/* Must be in the same order as enum mc_tty_frm_t entries! */
+static const char *tty_frm_map[] = {
+    "vert",
+    "horiz",
+    "lefttop",
+    "righttop",
+    "leftbottom",
+    "rightbottom",
+    "topmiddle",
+    "bottommiddle",
+    "leftmiddle",
+    "rightmiddle",
+    "cross",
+    "dvert",
+    "dhoriz",
+    "dlefttop",
+    "drighttop",
+    "dleftbottom",
+    "drightbottom",
+    "dtopmiddle",
+    "dbottommiddle",
+    "dleftmiddle",
+    "drightmiddle",
+    NULL,
+};
+
+
+static int
+TTYLines (lua_State *L)
+{
+    int i;
+
+    luaL_checktype (L, 1, LUA_TTABLE);
+    for (i = 0; i < MC_TTY_FRM_MAX; ++i)
+    {
+        lua_getfield (L, 1, tty_frm_map[i]);
+        if (lua_isnil (L, -1))
+            return luaL_error (L, "missing key '%s' in TTYLines", tty_frm_map[i]);
+        mc_tty_frm[i] = mc_tty_normalize_lines_char (lua_tostring (L, -1));
+        lua_pop (L, 1);
+    }
+
+    return 1;
+}
+
 
 /* --------------------------------------------------------------------------------------------- */
 /*** public functions ****************************************************************************/
@@ -87,29 +131,49 @@ mc_skin_hardcoded_blackwhite_colors (mc_skin_t * mc_skin)
 void
 mc_skin_hardcoded_space_lines (mc_skin_t * mc_skin)
 {
-    /* single lines */
-    set_lines ("vert", " ");
-    set_lines ("horiz", " ");
-    set_lines ("lefttop", " ");
-    set_lines ("righttop", " ");
-    set_lines ("leftbottom", " ");
-    set_lines ("rightbottom", " ");
-    set_lines ("topmiddle", " ");
-    set_lines ("bottommiddle", " ");
-    set_lines ("leftmiddle", " ");
-    set_lines ("rightmiddle", " ");
-    set_lines ("cross", " ");
+    int errors;
 
-    set_lines ("dvert", " ");
-    set_lines ("dhoriz", " ");
-    set_lines ("dlefttop", " ");
-    set_lines ("drighttop", " ");
-    set_lines ("dleftbottom", " ");
-    set_lines ("drightbottom", " ");
-    set_lines ("dtopmiddle", " ");
-    set_lines ("dbottommiddle", " ");
-    set_lines ("dleftmiddle", " ");
-    set_lines ("drightmiddle", " ");
+    LUAMC_GUARD (Lg);
+    lua_getglobal (Lg, "_G");
+    lua_pushcfunction (Lg, TTYLines);
+    luaMC_rawsetfield (Lg, -2, "TTYLines");
+    lua_pop (Lg, 1);
+
+    errors = luaL_dostring (Lg, "\n\
+      declare 'Lines' --FIXME!\n\
+      Lines = TTYLines {\n\
+        -- single lines\n\
+        vert = ' ',\n\
+        horiz = ' ',\n\
+        lefttop = ' ',\n\
+        righttop = ' ',\n\
+        leftbottom = ' ',\n\
+        rightbottom = ' ',\n\
+        topmiddle = ' ',\n\
+        bottommiddle = ' ',\n\
+        leftmiddle = ' ',\n\
+        rightmiddle = ' ',\n\
+        cross = ' ',\n\
+      \n\
+        -- double lines\n\
+        dvert = ' ',\n\
+        dhoriz = ' ',\n\
+        dlefttop = ' ',\n\
+        drighttop = ' ',\n\
+        dleftbottom = ' ',\n\
+        drightbottom = ' ',\n\
+        dtopmiddle = ' ',\n\
+        dbottommiddle = ' ',\n\
+        dleftmiddle = ' ',\n\
+        drightmiddle = ' ',\n\
+      }\n\
+    ");
+
+    if (errors)
+        /* never returns! */
+        luaL_error (Lg, "unable to load TTYLines: %s", lua_tostring (Lg, -1));
+
+    LUAMC_UNGUARD (Lg);
 }
 
 /* --------------------------------------------------------------------------------------------- */
@@ -117,30 +181,49 @@ mc_skin_hardcoded_space_lines (mc_skin_t * mc_skin)
 void
 mc_skin_hardcoded_ugly_lines (mc_skin_t * mc_skin)
 {
-    /* single lines */
-    set_lines ("vert", "|");
-    set_lines ("horiz", "-");
-    set_lines ("lefttop", "+");
-    set_lines ("righttop", "+");
-    set_lines ("leftbottom", "+");
-    set_lines ("rightbottom", "+");
-    set_lines ("topmiddle", "-");
-    set_lines ("bottommiddle", "-");
-    set_lines ("leftmiddle", "|");
-    set_lines ("rightmiddle", "|");
-    set_lines ("cross", "+");
+    int errors;
 
-    /* double lines */
-    set_lines ("dvert", "|");
-    set_lines ("dhoriz", "-");
-    set_lines ("dlefttop", "+");
-    set_lines ("drighttop", "+");
-    set_lines ("dleftbottom", "+");
-    set_lines ("drightbottom", "+");
-    set_lines ("dtopmiddle", "-");
-    set_lines ("dbottommiddle", "-");
-    set_lines ("dleftmiddle", "|");
-    set_lines ("drightmiddle", "|");
+    LUAMC_GUARD (Lg);
+    lua_getglobal (Lg, "_G");
+    lua_pushcfunction (Lg, TTYLines);
+    luaMC_rawsetfield (Lg, -2, "TTYLines");
+    lua_pop (Lg, 1);
+
+    errors = luaL_dostring (Lg, "\n\
+      declare 'Lines' --FIXME!\n\
+      Lines = TTYLines {\n\
+        -- single lines\n\
+        vert = '|',\n\
+        horiz = '-',\n\
+        lefttop = '+',\n\
+        righttop = '+',\n\
+        leftbottom = '+',\n\
+        rightbottom = '+',\n\
+        topmiddle = '-',\n\
+        bottommiddle = '-',\n\
+        leftmiddle = '|',\n\
+        rightmiddle = '|',\n\
+        cross = '+',\n\
+      \n\
+        -- double lines\n\
+        dvert = '|',\n\
+        dhoriz = '-',\n\
+        dlefttop = '+',\n\
+        drighttop = '+',\n\
+        dleftbottom = '+',\n\
+        drightbottom = '+',\n\
+        dtopmiddle = '-',\n\
+        dbottommiddle = '-',\n\
+        dleftmiddle = '|',\n\
+        drightmiddle = '|',\n\
+      }\n\
+    ");
+
+    if (errors)
+        /* never returns! */
+        luaL_error (Lg, "unable to load TTYLines: %s", lua_tostring (Lg, -1));
+
+    LUAMC_UNGUARD (Lg);
 }
 
 /* --------------------------------------------------------------------------------------------- */

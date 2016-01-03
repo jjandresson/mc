@@ -97,45 +97,34 @@ string_array_comparator (gconstpointer a, gconstpointer b)
 
 /* --------------------------------------------------------------------------------------------- */
 
-static lua_State *
-mc_skin_newstate (const gchar *file_name)
+static gboolean
+mc_skin_loadfile (const gchar *file_name)
 {
-    lua_State *L = luaL_newstate ();
-    luaL_openlibs (L);
-    if (luaL_loadfile (L, file_name) || lua_pcall (L, 0, 0, 0))
-    {
-        lua_close (L);
-        L = NULL;
-    }
-    return L;
+    return !(luaL_loadfile (Lg, file_name) || luaMC_safe_call (Lg, 0, 0));
 }
 
 static gboolean
 mc_skin_ini_file_load_search_in_dir (mc_skin_t * mc_skin, const gchar * base_dir)
 {
     char *file_name, *file_name2;
+    gboolean loaded = FALSE;
 
     file_name = g_build_filename (base_dir, MC_SKINS_SUBDIR, mc_skin->name, NULL);
     if (exist_file (file_name))
+        loaded = mc_skin_loadfile (file_name);
+    else
     {
-        mc_skin->config = mc_skin_newstate (file_name);
+        char *file_name2 = g_strdup_printf ("%s.ini", mc_skin->name);
+
         g_free (file_name);
-        return (mc_skin->config != NULL);
+        file_name = g_build_filename (base_dir, MC_SKINS_SUBDIR, file_name2, NULL);
+        g_free (file_name2);
+
+        if (exist_file (file_name))
+            loaded = mc_skin_loadfile (file_name);
     }
     g_free (file_name);
-
-    file_name2 = g_strdup_printf ("%s.ini", mc_skin->name);
-    file_name = g_build_filename (base_dir, MC_SKINS_SUBDIR, file_name2, NULL);
-    g_free (file_name2);
-
-    if (exist_file (file_name))
-    {
-        mc_skin->config = mc_skin_newstate (file_name);
-        g_free (file_name);
-        return (mc_skin->config != NULL);
-    }
-    g_free (file_name);
-    return FALSE;
+    return loaded;
 }
 
 /* --------------------------------------------------------------------------------------------- */
@@ -172,8 +161,7 @@ mc_skin_ini_file_load (mc_skin_t * mc_skin)
         g_free (file_name);
         if (!g_path_is_absolute (mc_skin->name))
             return FALSE;
-        mc_skin->config = mc_skin_newstate (mc_skin->name);
-        return (mc_skin->config != NULL);
+        return mc_skin_loadfile (mc_skin->name);
     }
     g_free (file_name);
 
@@ -210,9 +198,6 @@ mc_skin_ini_file_parse (mc_skin_t * mc_skin)
 void
 mc_skin_set_hardcoded_skin (mc_skin_t * mc_skin)
 {
-    mc_skin->config = luaL_newstate ();
-    luaL_openlibs (mc_skin->config);
-
     mc_skin_set_string (mc_skin, "skin", "description", "hardcoded skin");
 
     mc_skin_hardcoded_ugly_lines (mc_skin);

@@ -1,11 +1,9 @@
 #ifndef MC__SKIN_INTERNAL_H
 #define MC__SKIN_INTERNAL_H
 
-#include <lua.h>
-#include <lauxlib.h>
-#include <lualib.h>
-
 #include "lib/global.h"
+#include "lib/lua/capi.h"
+#include "lib/lua/capi-safecall.h"
 #include "lib/skin.h"
 
 /*** typedefs(not structures) and defined constants **********************************************/
@@ -26,7 +24,6 @@ typedef struct mc_skin_struct
 {
     gchar *name;
     gchar *description;
-    lua_State *config;
     GHashTable *colors;
     gboolean have_256_colors;
 } mc_skin_t;

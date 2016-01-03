@@ -303,27 +303,28 @@ mc_skin_color_check_inisection (const gchar * group)
 static void
 mc_skin_color_check_bw_mode (mc_skin_t * mc_skin)
 {
-    lua_State *L = mc_skin->config;
     gint _G;
 
     if (tty_use_colors () && !mc_global.tty.disable_colors)
         return;
 
-    lua_getglobal (L, "_G");			/* push _G */
-    _G = lua_gettop (L);
+    LUAMC_GUARD (Lg);
+    lua_getglobal (Lg, "_G");
+    _G = lua_gettop (Lg);
 
-    lua_pushnil (L);
-    while (lua_next (L, _G) != 0)		/* push key, value */
+    lua_pushnil (Lg);
+    while (lua_next (Lg, _G) != 0)
     {
-        const gchar *group = lua_tostring (L, -2);
+        const gchar *group = lua_tostring (Lg, -2);
         if (mc_skin_color_check_inisection (group))
         {
-            lua_pushnil (L);
-            lua_setfield (L, _G, group);
+            lua_pushnil (Lg);
+            luaMC_rawsetfield (Lg, _G, group);
         }
-        lua_pop (L, 1);				/* pop value, leaving key */
+        lua_pop (Lg, 1);		/* pop value, leave key */
     }
-    lua_pop (L, 2);				/* pop nil key, and _G */
+    lua_pop (Lg, 1);			/* pop _G */
+    LUAMC_UNGUARD (Lg);
 
     mc_skin_hardcoded_blackwhite_colors (mc_skin);
 }
@@ -335,7 +336,6 @@ mc_skin_color_check_bw_mode (mc_skin_t * mc_skin)
 gboolean
 mc_skin_color_parse_ini_file (mc_skin_t *skin)
 {
-    lua_State *L = skin->config;
     gint _G;
     mc_skin_color_t *color;
 
@@ -349,30 +349,32 @@ mc_skin_color_parse_ini_file (mc_skin_t *skin)
     tty_color_set_defaults (color->fgcolor, color->bgcolor, color->attrs);
     mc_skin_color_add_to_hash (skin, "core", "_default_", color);
 
-    lua_getglobal (L, "_G");			/* push _G */
-    _G = lua_gettop (L);
+    LUAMC_GUARD (Lg);
+    lua_getglobal (Lg, "_G");			/* push _G */
+    _G = lua_gettop (Lg);
 
-    lua_pushnil (L);
-    while (lua_next (L, _G) != 0)		/* push next group & table */
+    lua_pushnil (Lg);
+    while (lua_next (Lg, _G) != 0)		/* push next group & table */
     {
-        const gchar *group = lua_tostring (L, -2);
-        if (mc_skin_color_check_inisection (group) && lua_istable (L, -1))
+        const gchar *group = lua_tostring (Lg, -2);
+        if (mc_skin_color_check_inisection (group) && lua_istable (Lg, -1))
         {
-            gint t = lua_gettop (L);
+            gint t = lua_gettop (Lg);
 
-            lua_pushnil (L);
-            while (lua_next (L, t) != 0)	/* push next name & value */
+            lua_pushnil (Lg);
+            while (lua_next (Lg, t) != 0)	/* push next name & value */
             {
-                const gchar *name = lua_tostring (L, -2);
+                const gchar *name = lua_tostring (Lg, -2);
                 color = mc_skin_color_get_from_ini_file (skin, group, name);
                 if (color != NULL)
                     mc_skin_color_add_to_hash (skin, group, name, color);
-                lua_pop (L, 1);			/* pop value, leaving key */
+                lua_pop (Lg, 1);		/* pop inner value, leaving key */
             }
         }
-        lua_pop (L, 1);				/* pop outer value, leaving key */
+        lua_pop (Lg, 1);			/* pop outer value, leaving key */
     }
-    lua_pop (L, 2);				/* pop nil from lua_next, and _G */
+    lua_pop (Lg, 1);				/* pop _G */
+    LUAMC_UNGUARD (Lg);
 
     mc_skin_color_cache_init ();
     return TRUE;

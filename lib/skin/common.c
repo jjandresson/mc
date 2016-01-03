@@ -171,10 +171,6 @@ mc_skin_deinit (void)
 
     MC_PTR_FREE (mc_skin__default.description);
 
-    if (mc_skin__default.config)
-        lua_close (mc_skin__default.config);
-    mc_skin__default.config = NULL;
-
     mc_skin_is_init = FALSE;
 }
 
@@ -183,49 +179,51 @@ mc_skin_deinit (void)
 void
 mc_skin_set_string (mc_skin_t *mc_skin, const gchar *group, const gchar *name, const gchar *value)
 {
-    lua_State *L = mc_skin->config;
-
-    lua_getglobal (L, "_G");
-    lua_getfield (L, -1, group);	/* push _G[group] */
-    if (lua_isnil (L, -1))
+    LUAMC_GUARD (Lg);
+    lua_getglobal (Lg, "_G");
+    luaMC_rawgetfield (Lg, -1, group);	/* push _G[group] */
+    if (lua_isnil (Lg, -1))
     {
-        lua_pop (L, 1);			/* pop `nil` */
-        lua_newtable (L);		/* push {} */
-        lua_pushstring (L, group);	/* push group */
-        lua_pushvalue (L, -2);		/* copy of {} for settable */
-        lua_settable (L, -4);		/* _G[group] = {} */
+        lua_pop (Lg, 1);		/* pop `nil` */
+        lua_newtable (Lg);		/* push {} */
+        lua_pushstring (Lg, group);	/* push group */
+        lua_pushvalue (Lg, -2);		/* copy of {} for rawset */
+        lua_rawset (Lg, -4);		/* _G[group] = {} */
     }
-    if (lua_istable (L, -1))
+    if (lua_istable (Lg, -1))
     {
-        lua_pushstring (L, name);	/* push name */
-        lua_pushstring (L, value);	/* push value */
-        lua_settable (L, -3);		/* group[name] = value */
+        lua_pushstring (Lg, name);	/* push name */
+        lua_pushstring (Lg, value);	/* push value */
+        lua_rawset (Lg, -3);		/* group[name] = value */
     }
-    lua_pop (L, 2);			/* pop _G[group] and _G tables */
+    lua_pop (Lg, 2);			/* pop _G[group] and _G tables */
+    LUAMC_UNGUARD (Lg);
 }
 
 
 gchar *
 mc_skin_get_string (mc_skin_t *mc_skin, const gchar *group, const gchar *name, const gchar *def)
 {
-    lua_State *L = mc_skin->config;
     gchar *str;
 
-    lua_getglobal (L, "_G");
-    lua_getfield (L, -1, group);	/* push _G[group] */
-    if (!lua_istable (L, -1))
+    LUAMC_GUARD (Lg);
+    lua_getglobal (Lg, "_G");
+    luaMC_rawgetfield (Lg, -1, group);	/* push _G[group] */
+    if (!lua_istable (Lg, -1))
     {
-        lua_pop (L, 2);			/* pop _G[group] and _G */
+        lua_pop (Lg, 2);		/* pop _G[group] and _G */
         return g_strdup (def);
     }
 
-    lua_getfield (L, -1, name);		/* push group[name] */
-    if (lua_isstring (L, -1))
-        str = g_strdup (lua_tostring (L, -1));
+    luaMC_rawgetfield (Lg, -1, name);	/* push group[name] */
+    if (lua_isstring (Lg, -1))
+        str = g_strdup (lua_tostring (Lg, -1));
     else
         str = g_strdup (def);
 
-    lua_pop (L, 3);			/* pop group[name], _G[group] and _G */
+    lua_pop (Lg, 3);			/* pop group[name], _G[group] and _G */
+    LUAMC_UNGUARD (Lg);
+
     return str;
 }
 
@@ -233,24 +231,26 @@ mc_skin_get_string (mc_skin_t *mc_skin, const gchar *group, const gchar *name, c
 gboolean
 mc_skin_get_bool (mc_skin_t *mc_skin, const gchar *group, const gchar *name, gboolean def)
 {
-    lua_State *L = mc_skin->config;
     gboolean truth;
 
-    lua_getglobal (L, "_G");
-    lua_getfield (L, -1, group);	/* push _G[group] */
-    if (!lua_istable (L, -1))
+    LUAMC_GUARD (Lg);
+    lua_getglobal (Lg, "_G");
+    luaMC_rawgetfield (Lg, -1, group);	/* push _G[group] */
+    if (!lua_istable (Lg, -1))
     {
-        lua_pop (L, 2);			/* pop _G[group] and _G */
+        lua_pop (Lg, 2);		/* pop _G[group] and _G */
         return def;
     }
 
-    lua_getfield (L, -1, name);		/* push group[name] */
-    if (lua_isboolean (L, -1))
-        truth = lua_toboolean (L, -1);
+    luaMC_rawgetfield (Lg, -1, name);	/* push group[name] */
+    if (lua_isboolean (Lg, -1))
+        truth = lua_toboolean (Lg, -1);
     else
         truth = def;
 
-    lua_pop (L, 3);			/* pop group[name], _G[group] and _G */
+    lua_pop (Lg, 3);			/* pop group[name], _G[group] and _G */
+    LUAMC_UNGUARD (Lg);
+
     return truth;
 }
 
