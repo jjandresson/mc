@@ -364,7 +364,7 @@ mc_skin_color_parse_ini_file (mc_skin_t *skin)
             while (lua_next (L, t) != 0)	/* push next name & value */
             {
                 const gchar *name = lua_tostring (L, -2);
-                mc_skin_color_t *color = mc_skin_color_get_from_ini_file (skin, group, name);
+                color = mc_skin_color_get_from_ini_file (skin, group, name);
                 if (color != NULL)
                     mc_skin_color_add_to_hash (skin, group, name, color);
                 lua_pop (L, 1);			/* pop value, leaving key */
